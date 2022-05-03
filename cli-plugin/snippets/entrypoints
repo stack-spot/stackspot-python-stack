@@ -1,0 +1,3 @@
+    entry_points = {
+        'console_scripts': ['{{inputs.cli_command_name}}={{project_name_sanitized}}.cli:main']
+    }

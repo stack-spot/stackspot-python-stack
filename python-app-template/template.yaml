@@ -1,0 +1,20 @@
+name: python-app-template
+description: Basic Python template with poetry and pytest
+types:
+  - app-template
+inputs:
+  - label: Project Name
+    type: text
+    name: project_name
+    default: project-name
+  - label: Project Version
+    type: text
+    name: project_version
+    default: "1.0.0"
+    global: true
+  - label: Project Description
+    type: text
+    name: project_description
+    default: "Description of your project"
+global-computed-inputs:
+  project_name_sanitized: "{{inputs.project_name|replace('-', '_')|lower}}"

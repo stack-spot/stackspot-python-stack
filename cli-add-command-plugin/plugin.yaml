@@ -1,0 +1,65 @@
+name: cli-add-command-plugin
+description: Add a new command to a project based on cli-plugin
+display-name: cli-add-command-plugin
+picture: plugin.png
+category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
+compatibility:
+  - java
+  - spring
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#technologies
+  - "Api"
+types:
+  - app
+inputs:
+  - label: command
+    type: text
+    name: command
+    default: command_name
+  - label: command_description
+    type: text
+    name: command_description
+    default: Describe what the main command does.
+  - label: subcommand
+    type: text
+    name: subcommand
+    default: subcommand_name
+  - label: subcommand_description
+    type: text
+    name: subcommand_description
+    default: The description for your subcommand.
+  - label: argument
+    type: text
+    name: argument
+    default: argument_name
+hooks:
+  - type: edit
+    trigger: before-render
+    path: "src/{{project_name_sanitized}}/cli.py"
+    changes:
+      - insert:
+          line: 2
+          value: "from {{project_name_sanitized}}.commands.{{inputs.command}} import {{inputs.command}}\n"
+          when:
+            not-exists: "from {{project_name_sanitized}}.commands.{{inputs.command}} import {{inputs.command}}"
+      - search:
+          string: "@cli.result_callback()"
+          insert-before:
+            value: "cli.add_command({{inputs.command}})\n\n"
+          when:
+            not-exists: "cli.add_command({{inputs.command}})"
+  - type: edit
+    trigger: before-render
+    path: "src/setup.py"
+    changes:
+      - search:
+          string: "'{{project_name_sanitized}}.commands'"
+          replace-by:
+            value: "'{{project_name_sanitized}}.commands', '{{project_name_sanitized}}.commands.{{inputs.command}}'"
+          when:
+            not-exists: "'{{project_name_sanitized}}.commands.{{inputs.command}}'"
+  
+  

@@ -1,0 +1,10 @@
+type: app
+description: Default stackfile usecase description
+template: python-cli-stack/python-app-template
+inputs:
+  project_version: "1.0.0"
+  project_description: "Basic Python CLI"
+plugins:
+  - plugin: python-cli-stack/python-cli-plugin
+    inputs:
+      cli_command_name: mycli
