@@ -11,8 +11,6 @@ test:
 run:
 	python src/{{project_name_sanitized}}/__init__.py 
 
-# Activate env
-activate:
+# create env
+create-env:
 	python3 -m venv env
-	source env/bin/activate
-	make install
