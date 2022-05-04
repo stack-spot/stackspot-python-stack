@@ -24,23 +24,16 @@ global-computed-inputs:
 hooks:
   - type: edit
     trigger: before-render
-    path: "src/setup.py"
+    path: "src/pyproject.toml"
     changes:
-      - search:
-          string: ")"
-          insert-before:
-            snippet: snippets/entrypoints
+      - insert:
+          line: -1
+          snippet: "snippets/poetryscripts"
           when:
-            not-exists: "'console_scripts'"
+            not-exists: "{{cli_command_name_lower}} = '{{project_name_sanitized}}.cli:main'"
       - search:
-          string: "'pytest'"
+          string: "[tool.poetry.dependencies]"
           replace-by:
-            value: "'pytest', 'click'"
+            snippet: "snippets/clickdependency"
           when:
-            not-exists: "'click'"
-      - search:
-          string: "packages=['{{project_name_sanitized}}']"
-          replace-by:
-            value: "packages=['{{project_name_sanitized}}', '{{project_name_sanitized}}.commands', '{{project_name_sanitized}}.commands.say']"
-          when:
-            not-exists: "'{{project_name_sanitized}}.commands', '{{project_name_sanitized}}.commands.say'"
+            not-exists: "click"

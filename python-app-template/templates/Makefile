@@ -1,6 +1,7 @@
 ## Setup
 install:
-	cd src; pip install .
+	poetry config virtualenvs.create false
+	cd src; poetry install
 
 # Test
 test:
@@ -12,4 +13,6 @@ run:
 
 # Activate env
 activate:
-	python3 -m venv env; make install
+	python3 -m venv env
+	source env/bin/activate
+	make install

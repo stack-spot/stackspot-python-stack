@@ -51,15 +51,5 @@ hooks:
             value: "cli.add_command({{inputs.command}})\n\n"
           when:
             not-exists: "cli.add_command({{inputs.command}})"
-  - type: edit
-    trigger: before-render
-    path: "src/setup.py"
-    changes:
-      - search:
-          string: "'{{project_name_sanitized}}.commands'"
-          replace-by:
-            value: "'{{project_name_sanitized}}.commands', '{{project_name_sanitized}}.commands.{{inputs.command}}'"
-          when:
-            not-exists: "'{{project_name_sanitized}}.commands.{{inputs.command}}'"
   
   

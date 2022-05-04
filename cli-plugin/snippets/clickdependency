@@ -1,0 +1,2 @@
+[tool.poetry.dependencies]
+click = "^8.1.3"
