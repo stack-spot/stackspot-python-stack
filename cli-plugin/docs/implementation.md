@@ -1,10 +1,10 @@
 # Implementation
 
-#Inputs
+# Inputs
 
 - cli_command_name - The base command that will be used to invoke the CLI.
 
-#Local development
+# Local development
 
 We recommend the use of a virtual environment to develop your CLI. Follow these steps to use the Python virtual environment.
 1 - You can generate this env using the included make command: `make create-env`.
@@ -14,7 +14,7 @@ We recommend the use of a virtual environment to develop your CLI. Follow these 
 5 - You can now send commands to your cli using the `cli_command_name`.
 6 - Try: `<cli_command_name> say hello Stacker!`
 
-#Folder Structure
+# Folder Structure
 
 ```
 <project_name>

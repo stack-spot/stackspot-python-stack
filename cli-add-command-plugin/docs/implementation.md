@@ -1,10 +1,10 @@
-#Inputs
+# Inputs
 
 - command_name - The base command name.
 - command_description - Description for the command that will appear on the helper.
 - subcommand_description - Description for the subcommand taht will apperar on the helper.
 
-#Local development
+# Local development
 
 We recommend the use of a virtual environment to develop your CLI. Follow these steps to use the Python virtual environment.
 1 - You can generate this env using the included make command: `make create-env`.
@@ -14,7 +14,7 @@ We recommend the use of a virtual environment to develop your CLI. Follow these 
 5 - You can now send commands to your cli using the `cli_command_name`.
 6 - Try: `<cli_command_name> <command> <subcommand> Stacker!`
 
-#Folder Structure
+# Folder Structure
 
 ```
 <project_name>

@@ -1,10 +1,12 @@
 type: app
-description: Default stackfile usecase description
-template: python-cli-stack/python-app-template
+description: Create a custom Python CLI
+template: stackspot-python-stack/python-app-template
 inputs:
   project_version: "1.0.0"
   project_description: "Basic Python CLI"
+  author_name: "John Doe"
+  author_email: "johndoe@mail.com"
 plugins:
-  - plugin: python-cli-stack/python-cli-plugin
+  - plugin: stackspot-python-stack/cli-plugin
     inputs:
       cli_command_name: mycli
