@@ -51,5 +51,30 @@ hooks:
             value: "cli.add_command({{inputs.command}})\n\n"
           when:
             not-exists: "cli.add_command({{inputs.command}})"
+  - type: edit
+    trigger: after-render
+    path: "src/{{project_name_sanitized}}/commands/{{inputs.command}}/__init__.py"
+    changes:
+      - insert:
+          line: 1
+          value: "import click"
+          when:
+            not-exists: "import click"
+      - search:
+          string: "import click"
+          insert-after:
+            value: "from {{project_name_sanitized}}.commands.{{inputs.command}}.{{inputs.subcommand}} import {{inputs.subcommand}}\n"
+          when:
+            not-exists: "from {{project_name_sanitized}}.commands.{{inputs.command}}.{{inputs.subcommand}} import {{inputs.subcommand}}"
+      - insert:
+          line: 6
+          snippet: snippets/commandgroup
+          when:
+            not-exists: "def {{inputs.command}}():"
+      - insert:
+          line: -1
+          value: "\n\n{{inputs.command}}.add_command({{inputs.subcommand}})"
+          when:
+            not-exists: "{{inputs.command}}.add_command({{inputs.subcommand}})"
   
   

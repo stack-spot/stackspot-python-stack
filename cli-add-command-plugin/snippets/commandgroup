@@ -1,0 +1,4 @@
+@click.group()
+def {{inputs.command}}():
+    """{{inputs.command_description}}"""
+    pass

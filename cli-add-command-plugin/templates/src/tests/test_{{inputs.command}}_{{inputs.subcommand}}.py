@@ -1,7 +1,7 @@
 from click.testing import CliRunner
 from {{project_name_sanitized}}.cli import cli
 
-def test_say_hello():
+def test_{{inputs.command}}_{{inputs.subcommand}}():
     runner = CliRunner()
     result = runner.invoke(cli, ["{{inputs.command}}", "{{inputs.subcommand}}", "stacker"])
     
