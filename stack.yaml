@@ -1,7 +1,7 @@
 description: Develop your own Python project.
 name: stackspot-python-stack
 display-name: stackspot-python-stack
-picture: stack.png
+picture: https://hotmart.s3.amazonaws.com/product_contents/a3145272-0002-459b-a71b-08563972ec7e/640pxPythonlogonotextsvg.png
 category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
 compatibility: # Put a list of technologies compatible with the stack
   - python
