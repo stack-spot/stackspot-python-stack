@@ -1,0 +1,7 @@
+{
+    "name": "{{project_name_sanitized}}",
+    "version": "1.0.0",
+    "dependencies": {
+        "serverless-python-requirements": "^5.0.1"
+    }
+}

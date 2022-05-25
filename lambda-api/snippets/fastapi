@@ -1,0 +1,2 @@
+[tool.poetry.dependencies]
+fastapi = "^0.77.1"

@@ -1,0 +1,73 @@
+name: lambda-api
+description: Plugin to create lambda API with Fast-API and serverless
+display-name: lambda-api
+picture: plugin.png
+category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
+compatibility:
+  - python
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#technologies
+  - "Api"
+  - "Lambda"
+  - "Serverless"
+types:
+  - app
+inputs:
+  - label: Input Example
+    type: text
+    name: example
+    default: any text
+hooks:
+  - type: run-script
+    trigger: before-render
+    script: scripts/rm_folders.py {{project_name_sanitized}}
+  - type: edit
+    trigger: before-render
+    path: "src/pyproject.toml"
+    changes:
+      - search:
+          string: "[tool.poetry.dependencies]"
+          replace-by:
+            snippet: "snippets/uvicorn"
+          when:
+            not-exists: "uvicorn"
+      - search:
+          string: "[tool.poetry.dependencies]"
+          replace-by:
+            snippet: "snippets/mangum"
+          when:
+            not-exists: "mangum"
+      - search:
+          string: "[tool.poetry.dependencies]"
+          replace-by:
+            snippet: "snippets/fastapi"
+          when:
+            not-exists: "fastapi"
+      - search:
+          string: "[tool.poetry.dev-dependencies]"
+          replace-by:
+            snippet: "snippets/requests"
+          when:
+            not-exists: "requests"
+  - type: edit
+    trigger: before-render
+    path: "Makefile"
+    changes:
+      - search:
+          string: "cd src; pytest -v tests/"
+          replace-by:
+            value: "pytest -v tests/"
+      - search:
+          string: "python src/{{project_name_sanitized}}/__init__.py"
+          replace-by:
+            value: "python3 local.py"
+          when:
+            not-exists: "python3 local.py"
+  - type: run
+    trigger: after-render
+    working-dir: "{{project_name_sanitized}}"
+    commands:
+      - npm install
