@@ -11,6 +11,6 @@ technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/
   - pytest
 about: docs/about.md
 use-cases:
-  - title: Use Case Title
+  - title: Create a custom Python CLI
     content: docs/use-case.md
-    stackfile: stackfiles/default.yaml
+    stackfile: stackfiles/create_cli.yaml
