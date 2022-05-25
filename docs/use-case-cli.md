@@ -1,4 +1,3 @@
-# Create a custom Python CLI
 Develop and create your own CLI using Python and Click (https://click.palletsprojects.com/en/8.1.x/)
 
 Our stack has the basic template for creating a python project using poetry(https://python-poetry.org/) and pytest(https://docs.pytest.org/en/7.1.x/). With this template you can create a basic python project to develop your projects or use this template together with our plugins to create your custom CLI.
