@@ -1,0 +1,10 @@
+type: app
+description: Create a Python Lambda API Project
+template: stackspot-python-stack/python-app-template
+inputs:
+  project_version: "1.0.0"
+  project_description: "FastAPI Python Lambda"
+  author_name: "John Doe"
+  author_email: "johndoe@mail.com"
+plugins:
+  - plugin: stackspot-python-stack/lambda-api
