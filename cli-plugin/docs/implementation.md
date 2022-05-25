@@ -1,5 +1,3 @@
-# Implementation
-
 # Inputs
 
 - cli_command_name - The base command that will be used to invoke the CLI.
