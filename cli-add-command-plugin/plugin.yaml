@@ -1,17 +1,16 @@
 name: cli-add-command-plugin
 description: Add a new command to a project based on cli-plugin
 display-name: cli-add-command-plugin
-picture: plugin.png
+picture: https://avatars.githubusercontent.com/u/13245136?s=200&v=4
 category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
 compatibility:
-  - java
-  - spring
+  - python
 about: docs/about.md
 usage: docs/usage.md
 use-case: docs/use-case.md
 implementation: docs/implementation.md
 technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#technologies
-  - "Api"
+  - "Python"
 types:
   - app
 inputs:
