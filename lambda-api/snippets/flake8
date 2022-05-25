@@ -1,0 +1,2 @@
+[tool.poetry.dev-dependencies]
+flake8 = "^4.0.1"

@@ -1,0 +1,2 @@
+[tool.poetry.dev-dependencies]
+requests = "^2.27.1"

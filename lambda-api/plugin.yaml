@@ -1,0 +1,92 @@
+name: lambda-api
+description: Plugin to create lambda API with FastAPI and Serverless
+display-name: lambda-api
+picture: plugin.png
+category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
+compatibility:
+  - python
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#technologies
+  - "Api"
+  - "Lambda"
+  - "Serverless"
+types:
+  - app
+hooks:
+  - type: run-script
+    trigger: before-render
+    script: scripts/rm_folders.py
+  - type: edit
+    trigger: before-render
+    path: "src/pyproject.toml"
+    changes:
+      - search:
+          string: "[tool.poetry.dependencies]"
+          replace-by:
+            snippet: "snippets/uvicorn"
+          when:
+            not-exists: "uvicorn"
+      - search:
+          string: "[tool.poetry.dependencies]"
+          replace-by:
+            snippet: "snippets/mangum"
+          when:
+            not-exists: "mangum"
+      - search:
+          string: "[tool.poetry.dependencies]"
+          replace-by:
+            snippet: "snippets/fastapi"
+          when:
+            not-exists: "fastapi"
+      - search:
+          string: "[tool.poetry.dev-dependencies]"
+          replace-by:
+            snippet: "snippets/requests"
+          when:
+            not-exists: "requests"
+      - search:
+          string: "[tool.poetry.dev-dependencies]"
+          replace-by:
+            snippet: "snippets/flake8"
+          when:
+            not-exists: "flake8"
+      - search:
+          string: "[tool.poetry.dev-dependencies]"
+          replace-by:
+            snippet: "snippets/autopep8"
+          when:
+            not-exists: "autopep8"
+  - type: edit
+    trigger: before-render
+    path: "Makefile"
+    changes:
+      - search:
+          string: "cd src; pytest -v tests/"
+          replace-by:
+            value: "pytest -v tests/"
+      - search:
+          string: "cd src; poetry install"
+          replace-by:
+            value: "poetry install; npm install"
+      - search:
+          string: "python src/{{project_name_sanitized}}/__init__.py"
+          replace-by:
+            value: "python3 local.py"
+          when:
+            not-exists: "python3 local.py"
+      - insert:
+          line: 20
+          value: "\n\nlint:\n	poetry run autopep8 --in-place --recursive --aggressive --aggressive src/ tests/\n	poetry run flake8 src/ tests/"
+          when:
+            not-exists: "\n\nlint"
+      - insert:
+          line: 24
+          value: "\n\ndeploy:\n	sls deploy"
+          when:
+            not-exists: "\n\ndeploy"
+  - type: run-script
+    trigger: before-render
+    script: scripts/mv_file.py

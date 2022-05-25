@@ -1,0 +1,2 @@
+[tool.poetry.dependencies]
+mangum = "^0.15.0"

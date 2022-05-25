@@ -1,0 +1,82 @@
+service: {{project_name_sanitized}}
+
+package:
+  individually: true
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: eu-west-1
+  stage: ${opt:stage, "dev"}
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  #Compiling non-pure-Python modules or fetching their manylinux wheels is supported on non-linux OSs via the use of Docker
+  #and the docker-lambda image. To enable docker usage, add the following to your serverless.yml:
+  pythonRequirements:
+    dockerizePip: true
+    layer:
+      name: {{project_name_sanitized}}-layer
+      description: My awesome app layer
+      compatibleRuntimes:
+        - python3.8
+
+functions:
+  book:
+    package:
+      include:
+        - "book"
+      exclude:
+        - "requirements.txt"
+        - "package.json"
+        - "package-lock.json"
+        - ".serverless/**"
+        - ".virtualenv/**"
+        - "node_modules/**"
+        - ".idea"
+        - "user/**"
+        - "README.md"
+        - "dist"
+        - "local.py"
+        - "pyproject.toml"
+        - "poetry.lock"
+        - "venv"
+
+    handler: src/book/controller.handler
+    environment:
+      STAGE: ${self:provider.stage}
+    layers:
+      - { Ref: PythonRequirementsLambdaLayer }
+    events:
+      - httpApi: 'GET /books'
+      - httpApi: 'GET /books/{id}'
+  user:
+    package:
+      include:
+        - "user"
+      exclude:
+        - "requirements.txt"
+        - "package.json"
+        - "package-lock.json"
+        - ".serverless/**"
+        - ".virtualenv/**"
+        - "node_modules/**"
+        - ".idea"
+        - "book/**"
+        - "README.md"
+        - "dist"
+        - "local.py"
+        - "pyproject.toml"
+        - "poetry.lock"
+        - "venv"
+
+    handler: src/user/controller.handler
+    environment:
+      STAGE: ${self:provider.stage}
+    layers:
+      - { Ref: PythonRequirementsLambdaLayer }
+    events:
+      - httpApi: 'POST /user'
+      - httpApi: 'DELETE /user/{id}'
