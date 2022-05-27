@@ -1,7 +1,7 @@
 name: lambda-api
 description: Plugin to create lambda API with FastAPI and Serverless
 display-name: lambda-api
-picture: plugin.png
+picture: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Amazon_Lambda_architecture_logo.png"
 category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
 compatibility:
   - python

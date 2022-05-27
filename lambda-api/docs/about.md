@@ -1,1 +1,2 @@
-# About
+This plugin can be used to create REST APIs using the base python-app-template.
+This plugin will apply all the necessary dependencies for developing REST APIs based on FastAPI framework, Mangun and Serverless.
