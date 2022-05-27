@@ -5,12 +5,15 @@ picture: https://hotmart.s3.amazonaws.com/product_contents/a3145272-0002-459b-a7
 category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
 compatibility: # Put a list of technologies compatible with the stack
   - python
-technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#technologies 
+technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#technologies
   - python
-  - poetry 
+  - poetry
   - pytest
 about: docs/about.md
 use-cases:
   - title: Create a custom Python CLI
     content: docs/use-case-cli.md
     stackfile: stackfiles/create_cli.yaml
+  - title: Create a Python API Lambda
+    content: docs/use-case-api.md
+    stackfile: stackfiles/create_api.yaml
