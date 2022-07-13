@@ -1,12 +1,13 @@
-Develop and create your Lambda APIs using Python, FastAPI and Serverless.
 
-Our stack has the basic template for creating a python project using poetry(https://python-poetry.org/) and pytest(https://docs.pytest.org/en/7.1.x/). With this template you can create a basic python project to develop your projects or use this template together with our plugins to create your Lambda APIs.
+# **Casos de Uso**
 
-With the available plugins in this stack, you will be able to develop Lambda APIs and deploy them.
+## **Lambda**
 
-The Python API Stack was developed using the best practices in software architecture:
+Criar e desenvolver a sua APIs de Lambda utilizando **Python**, FastAPI e Serverless. 
 
-- Test driven development.
-- Clean Architecture.
-- Decoupled components.
-- New routes and APIs in a blink of a eye.
+### **O que é?**
+Você pode criar um projeto Python básico com esse template para desenvolver seus projetos ou usar este template junto com os nossos plugins para criar a suas APIs de Lambda. 
+
+#### **Como customizar?** 
+
+Os plugins disponíveis nessa Stack foram feitos para facilitar o desenvolvimento de APIs de Lambda e implementá-las. 
