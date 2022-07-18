@@ -1,4 +1,10 @@
-To use this plugin you should have an `stk app` created with the template: `python-app-template` and the `stackspot-python-stack/cli-plugin` applied to the app.
-Your development enviroment should have:
+
+## **Uso**
+Para utilizar esse Plugin é necessário ter:
+- **`stk app`** criado com o template **`python-app-template`** 
+- A stack **`stackspot-python-stack/cli-plugin`** nessa aplicação. 
+
+### **Requisitos**
+O seu ambiente de desenvolvimento precisar ter:
 - Python 3.8+
-- Unix based system to use the makefile.
+- Unix baseado no sistema pra utilizar o **`makefile`**.
