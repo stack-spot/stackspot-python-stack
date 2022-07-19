@@ -1,32 +1,55 @@
-# Inputs
+# **Implementação**
+Para implementar o Plugin é necessário saber os inputs, a estrutura da pasta e o local de desenvolvimento:
 
-- command_name - The base command name.
-- command_description - Description for the command that will appear on the helper.
-- subcommand_description - Description for the subcommand taht will apperar on the helper.
+## **Inputs**
 
-# Local development
+- **`command_name`**: A base do comando.
+- **`command_description`**: Descrição que aparece quando utilizar o comando **`-help`**. 
+- **`subcommand_description`**: Descrição do subcomando que aparece quando utilizar o comando **`-help`**.
 
-We recommend the use of a virtual environment to develop your CLI. Follow these steps to use the Python virtual environment.
-1 - You can generate this env using the included make command: `make create-env`.
-2 - After creating your venv you can activate it by calling the Script `activate` on `env/bin`, like: `source env/bin/activate`.
-3 - This will activate a virtual enviroment having the cli.py|main as entry point.
-4 - Now you can install the dependencies in your venv with `make install`.
-5 - You can now send commands to your cli using the `cli_command_name`.
-6 - Try: `<cli_command_name> <command> <subcommand> Stacker!`
+## **Local development**
+É recomendável utilizar um ambiente virtual para desenvolver sua CLI. 
 
-# Folder Structure
+Siga os passos abaixo para usar o ambiente virtual de Python:
+
+**Passo 1.** Gere o ambiente usando o comando:
 
 ```
-<project_name>
-	|__<project_name>
+make create-env
+``` 
+**Passo 2.** Ative o ambiente chamando o script **`activate`** na **`env/bin`**, veja o exemplo abaixo:
+```
+source env/bin/activate
+``` 
+
+**Passo 3.** Adicione o **`cli.py|main`** como ponto de entrada, com isso ocorre a ativação do ambiente virtual virtual.
+
+**Passo 4.** Instale as dependencias no seu ambiente virtual com o comando:
+```
+make install
+```  
+**Passo 5.** Envie os comandos para o seu CLI usando:
+```
+cli_command_name
+``` 
+**Passo 6.** Agora execute: 
+```
+<cli_command_name> <command> <subcommand> Stacker!
+``` 
+
+## **Estrutura da pasta**
+
+```
+<nome_projeto>
+	|__<nome_projeto>
 			|__cli.py
 			|__ __init__.py
-			|__commands
+			|__comandos
 				|__ __init__.py
-                |__<command>
-                	|__<subcommand>.py
+                |__<comando>
+                	|__<subcomando>.py
 	|__tests
-		|__test_<command>_<subcommand>.py
+		|__test_<comando>_<subcomando>.py
 	|__pyproject.toml
 |__Makefile
 ```

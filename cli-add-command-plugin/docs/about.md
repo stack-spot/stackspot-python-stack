@@ -1,2 +1,2 @@
-This plugin can be used to add new commands to a stk project based on `stackspot-python-stack/cli-plugin`
-This plugin will add a new command to the previously created CLI.
+## **Sobre**
+O Plugin é usado para adicionar novos comandos ao projetos **stk** baseados na **`stackspot-python-stack/cli-plugin`**. Você também pode adicionar novos comandos a CLI que você criou anteriormente.

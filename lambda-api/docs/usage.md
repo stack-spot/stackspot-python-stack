@@ -1,7 +1,10 @@
-# Pre-requisites
 
-To use this plugin you should have an `stk app` created with the template: `python-app-template`.
-Your development enviroment should have:
+## **Uso**
+Para utilizar esse Plugin é necessário ter:
+- **`stk app`** criado com o template **`python-app-template`** 
+
+### **Requisitos**
+O seu ambiente de desenvolvimento precisar ter:
 - Python 3.8+
-- Unix based system to use the makefile.
-- If you want to deploy application, you must have `serverless framework` installed.
+- Unix baseado no sistema pra utilizar o **`makefile`**.
+- Se você quiser fazer o deploy da sua aplicação, é necessário ter o **`serverless framework`** instalado.

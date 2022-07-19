@@ -1,9 +1,14 @@
-## Local development
+## **Local development**
 
-In order to run locally the APIs you can execute ```make run```. This command lies in Makefile.
-The script will make the api available on ```localhost:8080```.
+Para executar suas APIs localmente, execute:
+```
+make run
+``` 
+Esse comando está no **`makefile`**. 
 
-## Folder Structure
+- Depois disso o script mostra a API disponível no **```localhost:8080```**.
+
+## **Estrutura da pasta**
 
 ```
 <project_name>
