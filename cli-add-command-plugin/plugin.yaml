@@ -1,6 +1,6 @@
 name: cli-add-command-plugin
-description: Add a new command to a project based on cli-plugin
-display-name: cli-add-command-plugin
+description: Adiciona um novo comando ao projeto baseado no Plugin CLI. 
+display-name: CLI Add Command
 picture: https://avatars.githubusercontent.com/u/13245136?s=200&v=4
 category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
 compatibility:
