@@ -1,5 +1,4 @@
 
-# **Implementação**
 Para implementar o Plugin é necessário saber os inputs, a estrutura da pasta e o local de desenvolvimento:
 
 ## **Inputs**
