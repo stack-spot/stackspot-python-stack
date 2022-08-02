@@ -1,6 +1,6 @@
 ## **Local development**
 
-Para executar suas APIs localmente, execute:
+Para executar suas APIs localmente, execute o comando:
 ```
 make run
 ``` 

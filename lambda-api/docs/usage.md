@@ -1,5 +1,4 @@
 
-## **Uso**
 Para utilizar esse Plugin é necessário ter:
 - **`stk app`** criado com o template **`python-app-template`** 
 

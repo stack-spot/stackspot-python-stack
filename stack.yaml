@@ -1,6 +1,6 @@
-description: Develop your own Python project.
+description: Desenvolva e publique a sua CLI personalizada ou APIs Lambda com a Stack de Phyton.
 name: stackspot-python-stack
-display-name: stackspot-python-stack
+display-name: Python Stack
 picture: https://hotmart.s3.amazonaws.com/product_contents/a3145272-0002-459b-a71b-08563972ec7e/640pxPythonlogonotextsvg.png
 category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
 compatibility: # Put a list of technologies compatible with the stack

@@ -1,5 +1,5 @@
 
-## **Uso**
+
 Para utilizar esse Plugin é necessário ter:
 - **`stk app`** criado com o template **`python-app-template`** 
 - A stack **`stackspot-python-stack/cli-plugin`** nessa aplicação. 

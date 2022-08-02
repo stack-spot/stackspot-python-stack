@@ -1,10 +1,9 @@
 
-## **Sobre**
 Você pode desenvolver e criar sua própria CLI utilizando a Stack de Python. 
 A nossa Stack possui um template para criar um projeto Python usando o [**Poetry**](https://python-poetry.org/) e [**pytest**](https://docs.pytest.org/en/7.1.x/). 
 
 Com esse Template você pode:
-- Criar um projeto base de Python para desenvolver seus projetos;
+- Criar um projeto base em Python para desenvolver seus projetos;
 - Utilizar com outros Plugins e criar sua própria CLI. Você pode fazer isso usando o framework Click.
 
 
