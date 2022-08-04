@@ -1,5 +1,5 @@
 name: python-app-template
-description: Basic Python template with poetry and pytest
+description: Template básico em Python com Poetry and Pytest.
 types:
   - app-template
 inputs:

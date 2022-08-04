@@ -1,6 +1,4 @@
 
-# **Casos de Uso**
-
 ## **Lambda**
 
 Criar e desenvolver a sua APIs de Lambda utilizando **Python**, **FastAPI** e **Serverless**. 
