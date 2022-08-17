@@ -1,18 +1,17 @@
-name: lambda-api
+name: stackspot-python-stack/lambda-api
 description: Plugin to create lambda API with FastAPI and Serverless
 display-name: lambda-api
 picture: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Amazon_Lambda_architecture_logo.png"
-category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
+category: Backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
 compatibility:
-  - python
+  - Python
 about: docs/about.md
 usage: docs/usage.md
 use-case: docs/use-case.md
 implementation: docs/implementation.md
 technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#technologies
   - "Api"
-  - "Lambda"
-  - "Serverless"
+  - "AWS Lambda"
 types:
   - app
 hooks:
