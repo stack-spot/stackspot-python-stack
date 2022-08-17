@@ -1,4 +1,4 @@
-name: stackspot-python-stack/python-app-template
+name: python-app-template
 description: Basic Python template with poetry and pytest
 types:
   - app-template

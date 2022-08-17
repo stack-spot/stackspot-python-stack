@@ -1,4 +1,4 @@
-name: stackspot-python-stack/lambda-api
+name: lambda-api
 description: Plugin to create lambda API with FastAPI and Serverless
 display-name: lambda-api
 picture: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Amazon_Lambda_architecture_logo.png"
