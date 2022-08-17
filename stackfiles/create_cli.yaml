@@ -1,5 +1,5 @@
 type: app
-description: Create a custom Python CLI
+description: Criar uma CLI personalizada em Python.
 template: stackspot-python-stack/python-app-template
 inputs:
   project_version: "1.0.0"
