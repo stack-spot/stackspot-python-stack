@@ -28,11 +28,3 @@ def get_book(book_id: int):
     if book is None:
         raise HTTPException(status_code=404, detail="Book not found")
     return book
-
-
-def get_books(book_name):
-    result = []
-    for book in books:
-        if book_name in book.name:
-            result.append(book)
-    return result
