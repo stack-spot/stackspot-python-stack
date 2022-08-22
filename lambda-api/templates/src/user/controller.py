@@ -7,7 +7,7 @@ app = FastAPI()
 router = APIRouter(tags=["users"], responses={404: {"description": "User not found"}})
 
 
-@router.post("/user/")
+@router.post("/user")
 def post_user(user: User):
     return usecase.post_user(user)
 
