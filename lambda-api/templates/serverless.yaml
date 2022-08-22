@@ -50,7 +50,6 @@ functions:
     layers:
       - { Ref: PythonRequirementsLambdaLayer }
     events:
-      - httpApi: 'GET /books'
       - httpApi: 'GET /books/{id}'
   user:
     package:
