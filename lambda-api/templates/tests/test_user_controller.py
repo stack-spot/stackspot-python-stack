@@ -7,7 +7,7 @@ client = TestClient(app)
 
 def test_post_user():
     response = client.post(
-        "/user/",
+        "/user",
         json={"id_": 1, "name": "John Doe", "age": 33})
     assert response.status_code == 200
     assert response.json() == {
@@ -19,7 +19,7 @@ def test_post_user():
 
 def test_post_user_error_invalid_age():
     response = client.post(
-        "/user/",
+        "/user",
         json={"id_": 1, "name": "John Doe", "age": 150})
     assert response.status_code == 422
     assert response.json() == {'detail': [{'ctx': {'limit_value': 130},
