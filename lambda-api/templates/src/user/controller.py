@@ -12,10 +12,5 @@ def post_user(user: User):
     return usecase.post_user(user)
 
 
-@router.delete("/user/{id}")
-def delete_user(id):
-    return usecase.delete_user(id)
-
-
 app.include_router(router)
 handler = Mangum(app)

@@ -1,4 +1,3 @@
-from fastapi import HTTPException
 from pydantic import BaseModel, Field
 
 
@@ -24,10 +23,3 @@ users = [User(id_=1, name="John Doe", age=33),
 
 def post_user(user: User):
     return user
-
-
-def delete_user(user_id: int):
-    for user in users:
-        if user.id_ == int(user_id):
-            return f"User {user_id} deleted!"
-    raise HTTPException(status_code=404, detail="User not found")
