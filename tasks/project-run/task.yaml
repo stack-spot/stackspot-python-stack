@@ -1,0 +1,14 @@
+name: project-run
+description: Executar projeto python
+supported-os:
+- windows
+- linux
+- mac
+requirements-check:
+  dependency-python:
+    check-command: python3 --version
+    info: python is not installed
+command: |
+  pwd
+  python3 {{target_path}}/src/{{project_name_sanitized}}/__init__.py
+

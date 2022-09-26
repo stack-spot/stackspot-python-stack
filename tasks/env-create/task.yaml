@@ -1,0 +1,17 @@
+name: env-create
+description: Criar environment separado do global
+supported-os:
+- windows
+- linux
+- mac
+requirements-check:
+  dependency-python:
+    check-command: python3 --version
+    info: python is not installed
+  dependency-poetry:
+    check-command: poetry --version
+    info: poetry is not installed
+command: |
+  cd src;
+  poetry config --local virtualenvs.in-project true;
+  poetry install

@@ -1,0 +1,19 @@
+name: test-run
+description: Executar testes
+supported-os:
+- windows
+- linux
+- mac
+requirements-check:
+  dependency-python:
+    check-command: python3 --version
+    info: python is not installed
+  dependency-poetry:
+    check-command: cd src; poetry --version
+    info: poetry is not installed
+  dependency-pytest:
+    check-command: cd src; poetry run pytest --version
+    info: pytest is not installed
+command: |
+  cd src
+  poetry run pytest
