@@ -1,0 +1,10 @@
+
+{{ uri }}: {{ uri_sanitized }}
+
+{{ method }}: {{ method_sanitized }}
+
+{{ operation_id }}: {{ operation_id_sanitized }}
+
+{{ entity }}: {{ entity }}
+
+{{ entity }}: {{ entity_folder_name }}

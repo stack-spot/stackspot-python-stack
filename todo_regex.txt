@@ -1,0 +1,14 @@
+client
+clients/
+clients/{id}
+clients-support/{id}
+clients-support-mesa/{id}
+client?sort=true
+client/{id}?sort=true
+clients-support-mesa/{idmesa}
+client/{id}/mesa/{id}
+client/{id}/mesa/{id}/porta/{id}
+client/{id}/mesa/{id}/porta
+
+
+([a-z]*(([-][a-z]*)*)((\/){[a-z]*})?)((\/)([a-z]*(([-][a-z]*)*)(\/{[a-z]*})?))?

@@ -1,0 +1,69 @@
+- Gerar model vazio
+
+- Implementar no futuro loop  para solicitar informações dentro yaml
+
+
+POST /user/
+PUT /user/{id}
+GET /user
+user
+    get-user
+        controller.py
+    create-user
+        controller.py
+        usecase.py
+        models.py
+    update-user
+        controller.py
+        usecase.py
+        models.py
+client
+    client-create
+
+
+opera
+
+
+operationId:
+    create-user
+    method:
+    POST
+    /users
+    create_user
+    controller, use_case.py
+
+Questions:
+entidade ou namespace: users
+id operacao: list-user, get
+method:
+uri:
+
+/users/update_user/
+    - controller.py
+    - usecase.py
+    - model.py
+
+GET|PUT|DELETE|PATCH: /supermercado/{supermercado-id}/client/{id}
+GET|POST: /supermercado/{supermercado-id}/client
+
+entity by user: Client
+entity folder name: client
+entity file name: model.py
+entity class name: Client
+
+operation_id by user: create-or-update-client
+operation_id folder name: create_or_update_client
+operation_id method name: create_or_update_client
+
+method by user: Post
+method on controller: post
+
+
+contain_request_model: true (PUT, POST, PATCH)
+contain_request_params: true # Não é query params
+request_model: Client
+
+uri by user: /supermercado/{supermercado-id}/client/{id}
+uri para descricao FastAPI: /supermercado/{supermercado_id}/client/{id}
+
+request_query_params: ['supermercado_id', 'id']
