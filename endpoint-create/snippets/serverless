@@ -1,4 +1,4 @@
-  {{ entity_folder_name }}:
+  {{ resource_folder_name }}:
     package:
       patterns:
         - '!node_modules/**'
@@ -22,11 +22,11 @@
         - "!local.py"
         - "!pyproject.toml"
         - "!poetry.lock"
-    handler: src/{{ entity_folder_name }}/{{ operation_id_sanitized }}/controller.handler
+    handler: src/{{ resource_folder_name }}/{{ operation_id_sanitized }}/controller.handler
     environment:
       STAGE: ${self:provider.stage}
     layers:
       - { Ref: PythonRequirementsLambdaLayer }
     events:
-      - httpApi: "{{method}} {{uri_sanitized}}"
+      - httpApi: "{{method}} {{uri}}"
 

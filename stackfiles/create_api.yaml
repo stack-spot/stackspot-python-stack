@@ -10,7 +10,7 @@ plugins:
   - plugin: stackspot-python-stack/lambda-api
   - plugin: stackspot-python-stack/endpoint-create
     inputs:
-      entity: User
+      resource: User
       operation_id: create
       method: POST
       uri: /user

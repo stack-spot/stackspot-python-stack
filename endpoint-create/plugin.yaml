@@ -14,13 +14,13 @@ technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/
 types:
   - app
 inputs:
-  - label: Type name of your entity
-    name: entity
+  - label: Type name of your resource
+    name: resource
     type: text
     required: true
     default: Client
     pattern: "([A-Z][a-z]+)+"
-    help: "Inform your entity name (e.g: Client)"
+    help: "Inform your resource name (e.g: Client)"
 
   - label: Type name of your operation-id
     name: operation_id
@@ -54,7 +54,7 @@ computed-inputs:
   uri_sanitized: "{{ uri | snakecase }}"
   method_sanitized: "{{ method | lower }}"
   operation_id_sanitized: "{{ operation_id | snakecase }}"
-  entity_folder_name: "{{ entity | snakecase }}"
+  resource_folder_name: "{{ resource | snakecase }}"
 hooks:
   - type: run-script
     trigger: before-render
@@ -66,15 +66,15 @@ hooks:
       - search:
           string: "from fastapi import FastAPI"
           insert-after:
-            value: "from src.{{ entity_folder_name }}.{{ operation_id_sanitized }}.controller import router as {{ entity_folder_name }}_{{ operation_id_sanitized }}_router\n"
+            value: "from src.{{ resource_folder_name }}.{{ operation_id_sanitized }}.controller import router as {{ resource_folder_name }}_{{ operation_id_sanitized }}_router\n"
           when:
-            not-exists: "from src.{{ entity_folder_name }}.{{ operation_id_sanitized }}.controller import router as {{ entity_folder_name }}_{{ operation_id_sanitized }}_router"
+            not-exists: "from src.{{ resource_folder_name }}.{{ operation_id_sanitized }}.controller import router as {{ resource_folder_name }}_{{ operation_id_sanitized }}_router"
       - search:
           string: "app = FastAPI()"
           insert-after:
-            value: "app.include_router({{ entity_folder_name }}_{{ operation_id_sanitized }}_router)\n"
+            value: "app.include_router({{ resource_folder_name }}_{{ operation_id_sanitized }}_router)\n"
           when:
-            not-exists: "app.include_router({{ entity_folder_name }}_{{ operation_id_sanitized }}_router)"
+            not-exists: "app.include_router({{ resource_folder_name }}_{{ operation_id_sanitized }}_router)"
   - type: edit-yaml
     trigger: after-render
     path: serverless.yaml

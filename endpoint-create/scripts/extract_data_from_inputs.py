@@ -13,15 +13,15 @@ def run(metadata: Metadata = None):
 
     uri = inputs['uri']
     method = inputs['method_sanitized']
-    entity = inputs['entity']
-    entity_folder_name = inputs['entity_folder_name']
+    resource = inputs['resource']
+    resource_folder_name = inputs['resource_folder_name']
 
 
-    metadata.global_computed_inputs['parameters'] = get_parameters(uri, method, entity, entity_folder_name)
+    metadata.global_computed_inputs['parameters'] = get_parameters(uri, method, resource, resource_folder_name)
     
     return metadata
     
-def get_parameters(uri, method,  entity, entity_folder_name):
+def get_parameters(uri, method,  resource, resource_folder_name):
     uri_params_groups = finditer(r'\{(?P<parameter>([a-z]+(-[a-z]*)+)|[a-z]+)\}', uri)
     parameters = []
 
@@ -31,11 +31,11 @@ def get_parameters(uri, method,  entity, entity_folder_name):
             parameter = parameter.replace('-', '_')
             parameters.append((parameter, 'str'))
 
-    if __contain_entity_parameter(method):
-        parameters.append((entity_folder_name, entity))
+    if __contain_resource_parameter(method):
+        parameters.append((resource_folder_name, resource))
 
     return parameters
     
 
-def __contain_entity_parameter(method: str):
+def __contain_resource_parameter(method: str):
     return method in ['post', 'put', 'patch']
