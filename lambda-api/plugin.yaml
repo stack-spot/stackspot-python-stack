@@ -15,12 +15,9 @@ technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/
 types:
   - app
 hooks:
-  - type: run-script
-    trigger: before-render
-    script: scripts/rm_folders.py
   - type: edit
     trigger: before-render
-    path: "src/pyproject.toml"
+    path: "pyproject.toml"
     changes:
       - search:
           string: "[tool.poetry.dependencies]"
@@ -86,6 +83,3 @@ hooks:
           value: "\n\ndeploy:\n	sls deploy"
           when:
             not-exists: "\n\ndeploy"
-  - type: run-script
-    trigger: before-render
-    script: scripts/mv_file.py

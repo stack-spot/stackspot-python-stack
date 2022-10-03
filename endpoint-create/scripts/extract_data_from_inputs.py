@@ -22,14 +22,14 @@ def run(metadata: Metadata = None):
     return metadata
     
 def get_parameters(uri, method,  entity, entity_folder_name):
-    uri_params_groups = finditer(r'(?P<parameter>{([a-z]+(-[a-z]*)+)}|{[a-z]+})', uri)
+    uri_params_groups = finditer(r'\{(?P<parameter>([a-z]+(-[a-z]*)+)|[a-z]+)\}', uri)
     parameters = []
 
     if uri_params_groups:
         for uri_param_group in uri_params_groups:
             parameter = uri_param_group.group('parameter')
-            parameter = parameter.replace('-', '_').replace('{', '').replace('}', '')
-            parameters.append((parameter, 'int'))
+            parameter = parameter.replace('-', '_')
+            parameters.append((parameter, 'str'))
 
     if __contain_entity_parameter(method):
         parameters.append((entity_folder_name, entity))

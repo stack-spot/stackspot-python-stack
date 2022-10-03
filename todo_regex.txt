@@ -9,6 +9,7 @@ clients-support-mesa/{idmesa}
 client/{id}/mesa/{id}
 client/{id}/mesa/{id}/porta/{id}
 client/{id}/mesa/{id}/porta
+/company/{company-id}/client/{id}?query={query}&quantity={quantity}&order={order}
 
 
-([a-z]*(([-][a-z]*)*)((\/){[a-z]*})?)((\/)([a-z]*(([-][a-z]*)*)(\/{[a-z]*})?))?
+Tentativa de regex: ([a-z]*(([-][a-z]*)*)((\/){[a-z]*})?)((\/)([a-z]*(([-][a-z]*)*)(\/{[a-z]*})?))?

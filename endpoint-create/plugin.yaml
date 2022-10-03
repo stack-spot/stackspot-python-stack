@@ -14,61 +14,73 @@ technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/
 types:
   - app
 inputs:
-- label: Type name of your entity
-  name: entity
-  type: text
-  required: true
-  default: Client
-  pattern: "([A-Z][a-z]+)+"
-  help: "Inform your entity name (e.g: Client)"
+  - label: Type name of your entity
+    name: entity
+    type: text
+    required: true
+    default: Client
+    pattern: "([A-Z][a-z]+)+"
+    help: "Inform your entity name (e.g: Client)"
 
-- label: Type name of your operation-id
-  name: operation_id
-  type: text
-  pattern: "[a-z]*(([-][a-z]+)+)?"
-  help: "Inform your operation-id (e.g: create-or-update-client)"
-  required: true
-  default: create-or-update
+  - label: Type name of your operation-id
+    name: operation_id
+    type: text
+    pattern: "[a-z]*(([-][a-z]+)+)?"
+    help: "Inform your operation-id (e.g: create-or-update-client)"
+    required: true
+    default: create-or-update
 
-- label: Type URI of new endpoint
-  name: uri
-  type: text
-  required: true
-  # pattern: "\/[a-z]*(([-][a-z]*)*)(\/{[a-z]*})?"
-  # default: client
-  # default: client/{id}
-  default: "client/{fabricante-id}/fabricante/{id}/{me-us-avos}/{co-p-iar}"
-  help: "Inform your URI (e.g: client/{id}) or company/{company-id}/client/{id}"
-  # TODO: validar que comece com /
-  # TODO: validar multiplos parâmetros com mesmo nome. e.g: {id}/.../{id} 
+  - label: Type URI of new endpoint
+    name: uri
+    type: text
+    required: true
+    default: "/company/{company-id}/client?query={query}&quantity={quantity}&order={order}"
+    help: "Inform your URI (e.g: client/{id}) or company/{company-id}/client/{id}"
 
-- label: Choose http method of new endpoint
-  name: method
-  type: text
-  items:
-    - Delete
-    - Get
-    - Patch
-    - Post
-    - Put
-  default: Put
-  required: true
-  help: "Inform the method of the endpoint (e.g: post or delete)"
+  - label: Choose http method of new endpoint
+    name: method
+    type: text
+    items:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - PATCH
+    default: GET
+    required: true
+    help: "Inform the method of the endpoint (e.g: post or delete)"
 
 computed-inputs:
   uri_sanitized: "{{ uri | snakecase }}"
   method_sanitized: "{{ method | lower }}"
   operation_id_sanitized: "{{ operation_id | snakecase }}"
-  # entity_class_name: "{{ entity | pascalcase }}" # TODO: wait to be implemented
   entity_folder_name: "{{ entity | snakecase }}"
-
-  # # entity_class_name1: "{{ entity | pascalcase }}"
-  # entity_class_name2: "{{ entity | camelcase }}"
-  # entity_class_name3: "{{ entity | kebabcase }}"
-  # # entity_class_name4: "{{ entity | cobolcase }}"
-  # entity_class_name5: "{{ entity | snakecase }}"
-  # entity_class_name6: "{{ entity | macrocase }}"
 hooks:
   - type: run-script
     trigger: before-render
     script: scripts/extract_data_from_inputs.py
+  - type: edit
+    trigger: after-render
+    path: local.py
+    changes:
+      - search:
+          string: "from fastapi import FastAPI"
+          insert-after:
+            value: "from src.{{ entity_folder_name }}.{{ operation_id_sanitized }}.controller import router as {{ entity_folder_name }}_{{ operation_id_sanitized }}_router\n"
+          when:
+            not-exists: "from src.{{ entity_folder_name }}.{{ operation_id_sanitized }}.controller import router as {{ entity_folder_name }}_{{ operation_id_sanitized }}_router"
+      - search:
+          string: "app = FastAPI()"
+          insert-after:
+            value: "app.include_router({{ entity_folder_name }}_{{ operation_id_sanitized }}_router)\n"
+          when:
+            not-exists: "app.include_router({{ entity_folder_name }}_{{ operation_id_sanitized }}_router)"
+  - type: edit-yaml
+    trigger: after-render
+    path: serverless.yaml
+    encoding: utf-8
+    changes:
+      - yamlpath: "$.functions"
+        update:
+          snippet: "snippets/serverless"
+          

@@ -8,3 +8,9 @@ inputs:
   author_email: "johndoe@mail.com"
 plugins:
   - plugin: stackspot-python-stack/lambda-api
+  - plugin: stackspot-python-stack/endpoint-create
+    inputs:
+      entity: User
+      operation_id: create
+      method: POST
+      uri: /user
