@@ -9,6 +9,8 @@ requirements-check:
     check-command: python3 --version
     info: python is not installed
 command: |
+  #!/usr/bin/bash
   pwd
-  python3 {{target_path}}/src/{{project_name_sanitized}}/__init__.py
+  source {{target_path}}/.venv/bin/activate
+  python3 {{target_path}}/local.py
 

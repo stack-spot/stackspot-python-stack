@@ -1,6 +1,6 @@
-name: endpoint-create
+name: lambda-endpoint-create-plugin
 description: Add new endpoint
-display-name: endpoint-create
+display-name: lambda-endpoint-create-plugin
 picture: plugin.png
 category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
 compatibility:
