@@ -61,16 +61,21 @@ def post_user(user_request: UserRequest):
 - DONE          [endpoint-create] Ajustar nome do import e adição no include_router do arquivo 'local.py'
 - DONE          [endpoint-create] Ajustar nome do arquivo tests. test_User_controller.py para test_user_controller.py
 - DONE          [endpoint-create] Trocar entity para resource
+- DONE          [endpoint-create] Adicionar {operation-id}{entidade}Response
+- DONE          [endpoint-create] Adicionar {operation-id}{entidade}Request
+- DONE          [endpoint-create] Tratar para retornar lista da entidade caso endpoint n contenha/{id} no método GET
+- DONE          [endpoint-create] Tratar para retornar a entidade caso com /{id} no método GET
+- DONE          [endpoint-create] Tratar para retornar algo quando for PUT, PATCH, POST, DELETE
+- DONE          [endpoint-create] Adicionar logica de metodo do use_case, quando contém objeto ou tipo primitivo
+- DONE          [endpoint-create] Remover import do {{Resource}}Request quando é [GET|DELETE] do use_case e controller
+- DONE          [endpoint-create] Não gerar classe de {{Resource}}Request quando é [GET|DELETE]
 - TODO          [endpoint-create] Implementar logica para o gerar teste do controller. Lembrar de request e response
 - TODO          [endpoint-create] Implementar logica para o gerar teste do use_case. Lembrar de request e response
-- TODO          [endpoint-create] Adicionar {operation-id}{entidade}Response
-- TODO          [endpoint-create] Adicionar {operation-id}{entidade}Request
-- TODO          [endpoint-create] Tratar para retornar lista da entidade caso endpoint n contenha/{id} no método GET
-- TODO          [endpoint-create] Tratar para retornar a entidade caso com /{id} no método GET
-- TODO          [endpoint-create] Tratar para retornar algo quando for PUT, PATCH, POST, DELETE
-- TODO          [endpoint-create] Adicionar logica de metodo do use_case, quando contém objeto ou tipo primitivo
 - TODO          [endpoint-create] Adicionar retorno no controller com 200(GET, DELETE, PATCH, PUT) ou 201(POST)
 - TODO          [endpoint-create] Adicionar regex para URI validando todo_regex.txt
+- TODO          [endpoint-create] Tratar para preencher o id com dados do request
+- TODO          [endpoint-create] Tratar quando for put, patch o {{Resource}}Request n deve conter o id, porém conter o que?
+- TODO          [endpoint-create] Get List[{{ResourceResponse}}] n deveria ter , responses={404: {"description": "{{ResourceResponse}} not found"}})
 - TALK_ABOUT    [endpoint-create] Separar em pasta de teste de integração e unitário?
 - TALK_ABOUT    [endpoint-create] Tratar aplicar o plugin quando já havia sido aplicado com os mesmos parâmtros?
 - TALK_ABOUT    [endpoint-create] Renomear para 'lambda-endpoint-create-plugin' com commando 'endpoint-create'?

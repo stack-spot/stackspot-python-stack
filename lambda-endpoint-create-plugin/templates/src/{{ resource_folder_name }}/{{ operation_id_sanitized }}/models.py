@@ -1,8 +1,8 @@
 from pydantic import BaseModel, Field
 
 
-class {{resource}}(BaseModel):
-    id_: int = Field(..., gt=0, title='Id of the {{resource_sanitized}}.', description='Must be greater than zero')
+class {{ resource_request }}(BaseModel):
+    id_: int = Field(..., gt=0, title='Id of the {{resource_request }}.', description='Must be greater than zero')
 
     class Config:
         schema_extra = {
@@ -10,4 +10,16 @@ class {{resource}}(BaseModel):
                 "id_": 1
             }
         }
+{% if contain_resource_parameter %}
 
+
+class {{ resource_response }}(BaseModel):
+    id_: int = Field(..., gt=0, title='Id of the {{resource_response }}.', description='Must be greater than zero')
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "id_": 1
+            }
+        }
+{% endif %}

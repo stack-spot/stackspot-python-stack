@@ -55,6 +55,10 @@ computed-inputs:
   method_sanitized: "{{ method | lower }}"
   operation_id_sanitized: "{{ operation_id | snakecase }}"
   resource_folder_name: "{{ resource | snakecase }}"
+  resource_request: "{{ resource }}Request"
+  resource_response: "{{ resource }}Response"
+  resource_request_sanitized: "{{ resource_request | snakecase }}"
+  resource_response_sanitized: "{{ resource_response | snakecase }}"
 hooks:
   - type: run-script
     trigger: before-render
