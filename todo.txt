@@ -69,26 +69,24 @@ def post_user(user_request: UserRequest):
 - DONE          [endpoint-create] Adicionar logica de metodo do use_case, quando contém objeto ou tipo primitivo
 - DONE          [endpoint-create] Remover import do {{Resource}}Request quando é [GET|DELETE] do use_case e controller
 - DONE          [endpoint-create] Não gerar classe de {{Resource}}Request quando é [GET|DELETE]
+- DONE          [endpoint-create] Adicionar retorno no controller com 200(GET, DELETE, PATCH, PUT) ou 201(POST)
+- DONE          [endpoint-create] Renomear para 'lambda-endpoint-create-plugin' com commando 'endpoint-create'?
+- DONE          [endpoint-create] Verificar necessidade do inptus do extract_data_from_inputs.py. Talvez diminuir o escopo
 - TODO          [endpoint-create] Implementar logica para o gerar teste do controller. Lembrar de request e response
 - TODO          [endpoint-create] Implementar logica para o gerar teste do use_case. Lembrar de request e response
-- TODO          [endpoint-create] Adicionar retorno no controller com 200(GET, DELETE, PATCH, PUT) ou 201(POST)
 - TODO          [endpoint-create] Adicionar regex para URI validando todo_regex.txt
 - TODO          [endpoint-create] Tratar para preencher o id com dados do request
 - TODO          [endpoint-create] Tratar quando for put, patch o {{Resource}}Request n deve conter o id, porém conter o que?
 - TODO          [endpoint-create] Get List[{{ResourceResponse}}] n deveria ter , responses={404: {"description": "{{ResourceResponse}} not found"}})
 - TALK_ABOUT    [endpoint-create] Separar em pasta de teste de integração e unitário?
-- TALK_ABOUT    [endpoint-create] Tratar aplicar o plugin quando já havia sido aplicado com os mesmos parâmtros?
-- TALK_ABOUT    [endpoint-create] Renomear para 'lambda-endpoint-create-plugin' com commando 'endpoint-create'?
+- TALK_ABOUT    [endpoint-create] Tratar aplicar o plugin quando já havia sido aplicado com os mesmos parâmetros?
 - TALK_ABOUT    [endpoint-create] Permitir criar operation-id contendo números?
 - TALK_ABOUT    [endpoint-create] Permitir criar resource contendo números?
-- TALK_ABOUT    [endpoint-create] Verificar necessidade do inptus do extract_data_from_inputs.py. Talvez diminuir o escopo
-- TALK_ABOUT    [endpoint-create] Verificar necessidade do inptus globais
 - TODO          [cli-plugin]      Ajustar arquivo de usage.md para contemplar o run tasks
-- TALK_ABOUT    [lambda-api-plugin]      Ajustar arquivos readme para inglês?
 - TODO          [lambda-api-plugin]      Ajustar arquivo de implementation.md para conter a estrutura correta do projeto
 - TODO          [lambda-api-plugin]      Ajustar arquivo de usage.md para contemplar o run tasks
 - TODO          [lambda-api-plugin]      Ajustar arquivo de README.md para contemplar o run tasks
-- DONE          [lambda-api-plugin]      Renomear para 'lambda-api-plugin'?
+- DONE          [lambda-api-plugin]      Renomear 'lambda-api' para 'lambda-api-plugin'?
 - TALK_ABOUT    [docs]            Adicionar documentação do endpoint-create?
 - TODO          [cli-plugin]      Testar validando funcionamento
 - TODO          [cli-add-command-plugin]  Testar validando funcionamento
