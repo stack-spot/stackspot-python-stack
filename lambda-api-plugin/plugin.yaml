@@ -1,4 +1,4 @@
-name: lambda-api
+name: lambda-api-plugin
 description: Plugin para criar APIs de Lambda com FastAPI e Serveless.
 display-name: Lambda API
 picture: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Amazon_Lambda_architecture_logo.png"

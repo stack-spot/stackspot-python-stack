@@ -7,7 +7,7 @@ inputs:
   author_name: "John Doe"
   author_email: "johndoe@mail.com"
 plugins:
-  - plugin: stackspot-python-stack/lambda-api
+  - plugin: stackspot-python-stack/lambda-api-plugin
   - plugin: stackspot-python-stack/lambda-endpoint-create-plugin
     inputs:
       resource: User
