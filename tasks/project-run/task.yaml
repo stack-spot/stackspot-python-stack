@@ -8,9 +8,15 @@ requirements-check:
   dependency-python:
     check-command: python3 --version
     info: python is not installed
-command: |
-  #!/usr/bin/bash
-  pwd
-  source {{target_path}}/.venv/bin/activate
-  python3 {{target_path}}/local.py
-
+command:
+  linux: |
+    #!/usr/bin/bash
+    source {{ target_path }}/.venv/bin/activate
+    python3 {{ target_path }}/local.py
+  mac: |
+    #!/usr/bin/bash
+    source {{ target_path }}/.venv/bin/activate
+    python3 {{ target_path }}/local.py
+  windows: |
+    venv/Scripts/activate
+    python3 {{ target_path }}\local.py

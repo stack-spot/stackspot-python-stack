@@ -15,5 +15,4 @@ requirements-check:
     check-command: cd src; poetry run pytest --version
     info: pytest is not installed
 command: |
-  cd src
   poetry run pytest

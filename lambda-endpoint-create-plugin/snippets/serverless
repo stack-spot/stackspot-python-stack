@@ -28,4 +28,4 @@
   layers:
     - { Ref: PythonRequirementsLambdaLayer }
   events:
-    - httpApi: "{{method}} {{uri}}"
+    - httpApi: "{{ method }} {{ uri }}"

@@ -51,7 +51,6 @@ inputs:
     help: "Inform the method of the endpoint (e.g: post or delete)"
 
 computed-inputs:
-  uri_sanitized: "{{ uri | snakecase }}"
   method_sanitized: "{{ method | lower }}"
   operation_id_sanitized: "{{ operation_id | snakecase }}"
   resource_folder_name: "{{ resource | snakecase }}"

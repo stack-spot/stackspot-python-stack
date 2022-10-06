@@ -72,12 +72,14 @@ def post_user(user_request: UserRequest):
 - DONE          [endpoint-create] Adicionar retorno no controller com 200(GET, DELETE, PATCH, PUT) ou 201(POST)
 - DONE          [endpoint-create] Renomear para 'lambda-endpoint-create-plugin' com commando 'endpoint-create'?
 - DONE          [endpoint-create] Verificar necessidade do inptus do extract_data_from_inputs.py. Talvez diminuir o escopo
-- TODO          [endpoint-create] Implementar logica para o gerar teste do controller. Lembrar de request e response
-- TODO          [endpoint-create] Implementar logica para o gerar teste do use_case. Lembrar de request e response
+- DONE          [endpoint-create] Implementar logica para o gerar teste do controller. Lembrar de request e response
+- DONE          [endpoint-create] Preencher dados da URI no teste
+- DONE          [endpoint-create] Get List[{{ResourceResponse}}] n deveria ter , responses={404: {"description": "{{ResourceResponse}} not found"}})
 - TODO          [endpoint-create] Adicionar regex para URI validando todo_regex.txt
-- TODO          [endpoint-create] Tratar para preencher o id com dados do request
-- TODO          [endpoint-create] Tratar quando for put, patch o {{Resource}}Request n deve conter o id, porém conter o que?
-- TODO          [endpoint-create] Get List[{{ResourceResponse}}] n deveria ter , responses={404: {"description": "{{ResourceResponse}} not found"}})
+- TODO          [docs]            Adicionar documentação do endpoint-create?
+- FIX           [endpoint-create] Ajustar para obter nome do param query ao invés do valor. Ex.? ?query={query-my-own}, hoje pega query-my-own deveria pegar query para preencher no controller
+- TALK_ABOUT    [endpoint-create] Tratar para preencher o id com dados do request
+- TALK_ABOUT    [endpoint-create] Tratar quando for put, patch o {{Resource}}Request n deve conter o id, porém conter o que?
 - TALK_ABOUT    [endpoint-create] Separar em pasta de teste de integração e unitário?
 - TALK_ABOUT    [endpoint-create] Tratar aplicar o plugin quando já havia sido aplicado com os mesmos parâmetros?
 - TALK_ABOUT    [endpoint-create] Permitir criar operation-id contendo números?
@@ -87,6 +89,5 @@ def post_user(user_request: UserRequest):
 - TODO          [lambda-api-plugin]      Ajustar arquivo de usage.md para contemplar o run tasks
 - TODO          [lambda-api-plugin]      Ajustar arquivo de README.md para contemplar o run tasks
 - DONE          [lambda-api-plugin]      Renomear 'lambda-api' para 'lambda-api-plugin'?
-- TALK_ABOUT    [docs]            Adicionar documentação do endpoint-create?
 - TODO          [cli-plugin]      Testar validando funcionamento
 - TODO          [cli-add-command-plugin]  Testar validando funcionamento
