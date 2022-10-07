@@ -15,6 +15,9 @@ def test_{{ method_sanitized }}_{{ resource_folder_name }}_{{ operation_id_sanit
     response = client.{{ method_sanitized }}("{{ uri_sanitized_for_test }}")
     {% endif %}
 
+    {% if not should_response_data %}
+    assert response.status_code == status.HTTP_204_NO_CONTENT
+    {% else %}
     {% if method == 'POST' %}
     assert response.status_code == status.HTTP_201_CREATED
     {% else %}
@@ -34,4 +37,4 @@ def test_{{ method_sanitized }}_{{ resource_folder_name }}_{{ operation_id_sanit
     assert response.json() == {
         "id_": 20
     }
-    {% endif %}
+{% endif %}{% endif %}

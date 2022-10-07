@@ -1,0 +1,37 @@
+name: lambda-endpoint-create-multiples
+description: Create multiples endpoints
+display-name: lambda-endpoint-create-multiples-plugin
+picture: plugin.png
+category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
+compatibility:
+  - java
+  - spring
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#technologies
+  - "Api"
+types:
+  - app
+requirements:
+  - stackspot-python-stack/lambda-api
+inputs:
+  - label: Type name of your resource
+    name: resource
+    type: text
+    required: true
+    default: Client
+    pattern: "([A-Z][a-z]+)+"
+    help: "Inform your resource name (e.g: Client)"
+computed-inputs:
+  uri_of_resource: "{{ resource | snakecase }}"
+hooks:
+  - type: run
+    trigger: before-render
+    commands:
+      - stk apply plugin lambda-endpoint-create --resource {{resource}} --operation-id create --uri /{{uri_of_resource}} --method POST
+      - stk apply plugin lambda-endpoint-create --resource {{resource}} --operation-id update --uri /{{uri_of_resource}}/{id} --method PUT
+      - stk apply plugin lambda-endpoint-create --resource {{resource}} --operation-id delete --uri /{{uri_of_resource}}/{id} --method DELETE
+      - stk apply plugin lambda-endpoint-create --resource {{resource}} --operation-id get-all --uri /{{uri_of_resource}} --method GET
+      - stk apply plugin lambda-endpoint-create --resource {{resource}} --operation-id get-by-id --uri /{{uri_of_resource}}/{id} --method GET

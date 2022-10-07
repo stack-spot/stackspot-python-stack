@@ -13,6 +13,8 @@ technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/
   - "Api"
 types:
   - app
+requirements:
+  - stackspot-python-stack/lambda-api
 inputs:
   - label: Type name of your resource
     name: resource
@@ -61,7 +63,7 @@ computed-inputs:
 hooks:
   - type: run-script
     trigger: before-render
-    script: scripts/validate_if_command_has_already_been_applied.py
+    script: scripts/verify_command_has_already_been_applied.py
   - type: run-script
     trigger: before-render
     script: scripts/extract_data_from_inputs.py
@@ -89,4 +91,6 @@ hooks:
       - yamlpath: "$.functions"
         update:
           snippet: "snippets/serverless"
-          
+  - type: run-script
+    trigger: after-render
+    script: scripts/delete_file.py

@@ -23,11 +23,13 @@ def run(metadata: Metadata = None):
     uri_contain_resource_id = __uri_contain_resource_id(uri)
     should_response_as_list = __should_response_as_list(uri_contain_resource_id, method)
     contain_resource_parameter = __should_contain_resource_parameter(method)
+    should_response_data = __should_response_data(method)
 
     metadata.computed_inputs['parameters'] = __get_parameters(uri, resource_request, resource_folder_name, contain_resource_parameter)
     metadata.computed_inputs['uri_contain_resource_id'] = uri_contain_resource_id
     metadata.computed_inputs['should_response_as_list'] = should_response_as_list
     metadata.computed_inputs['contain_resource_parameter'] = contain_resource_parameter
+    metadata.computed_inputs['should_response_data'] = should_response_data
     metadata.computed_inputs['uri_sanitized'] = uri_sanitized
     metadata.computed_inputs['uri_sanitized_for_test'] = uri_sanitized_for_test
     metadata.computed_inputs['uri_sanitized_without_query_parms'] = uri_sanitized_without_query_parms
@@ -109,6 +111,10 @@ def __should_response_as_list(
 
 def __should_contain_resource_parameter(method: str) -> bool:
     return method in ['post', 'put', 'patch']
+
+
+def __should_response_data(method: str) -> bool:
+    return method != 'delete'
 
 
 def __get_uri_without_query_parms(uri) -> str:
