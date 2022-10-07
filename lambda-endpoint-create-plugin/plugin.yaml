@@ -1,4 +1,4 @@
-name: lambda-endpoint-create-plugin
+name: lambda-endpoint-create
 description: Add new endpoint
 display-name: lambda-endpoint-create-plugin
 picture: plugin.png
@@ -59,6 +59,9 @@ computed-inputs:
   resource_request_sanitized: "{{ resource_request | snakecase }}"
   resource_response_sanitized: "{{ resource_response | snakecase }}"
 hooks:
+  - type: run-script
+    trigger: before-render
+    script: scripts/validate_if_command_has_already_been_applied.py
   - type: run-script
     trigger: before-render
     script: scripts/extract_data_from_inputs.py

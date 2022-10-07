@@ -1,4 +1,4 @@
-name: project-run
+name: project
 description: Executar projeto python
 supported-os:
 - windows

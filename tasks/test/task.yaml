@@ -1,4 +1,4 @@
-name: test-run
+name: test
 description: Executar testes
 supported-os:
 - windows

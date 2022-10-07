@@ -1,4 +1,4 @@
-name: lambda-api-plugin
+name: lambda-api
 description: Plugin para criar APIs de Lambda com FastAPI e Serveless.
 display-name: Lambda API
 picture: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Amazon_Lambda_architecture_logo.png"
@@ -55,31 +55,7 @@ hooks:
             snippet: "snippets/autopep8"
           when:
             not-exists: "autopep8"
-  - type: edit
-    trigger: before-render
-    path: "Makefile"
-    changes:
-      - search:
-          string: "cd src; pytest -v tests/"
-          replace-by:
-            value: "pytest -v tests/"
-      - search:
-          string: "cd src; poetry install"
-          replace-by:
-            value: "poetry install; npm install"
-      - search:
-          string: "python src/{{project_name_sanitized}}/__init__.py"
-          replace-by:
-            value: "python3 local.py"
-          when:
-            not-exists: "python3 local.py"
-      - insert:
-          line: 20
-          value: "\n\nlint:\n	poetry run autopep8 --in-place --recursive --aggressive --aggressive src/ tests/\n	poetry run flake8 src/ tests/"
-          when:
-            not-exists: "\n\nlint"
-      - insert:
-          line: 24
-          value: "\n\ndeploy:\n	sls deploy"
-          when:
-            not-exists: "\n\ndeploy"
+  - type: run
+    trigger: after-render
+    commands:
+      - stk run env-create

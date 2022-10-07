@@ -47,13 +47,38 @@ def __get_parameters(
     if uri_params_groups:
         for uri_param_group in uri_params_groups:
             parameter = uri_param_group.group('parameter')
+
+            if __is_query_parameter(uri, parameter):
+                parameter = __get_query_parameter_name_of_value(uri, parameter)
+
             parameter = parameter.replace('-', '_')
+
             parameters.append((parameter, 'str'))
 
     if contain_resource_parameter:
         parameters.append((resource_folder_name, resource_request))
 
     return parameters
+
+
+def __is_query_parameter(uri, parameter_value):
+    try:
+        index_character_query_param = __get_query_param_index(uri)
+        index_of_parameter = uri.index(f'{{{parameter_value}}}')
+        return index_of_parameter > index_character_query_param
+    except:
+        return 0
+
+
+def __get_query_parameter_name_of_value(uri, parameter_value):
+    index_character_query_param = __get_query_param_index(uri)
+    uri_query_parameters = uri[index_character_query_param+1:]
+    parameters = uri_query_parameters.split('&')
+    parameter_value_with_braces = f'={{{parameter_value}}}'
+    for parameter in parameters:
+        if parameter_value in parameter:
+            return parameter.replace(parameter_value_with_braces, '')
+    return ''
 
 
 def __get_uri_sanitized(uri: str) -> str:
