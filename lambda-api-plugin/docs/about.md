@@ -1,5 +1,4 @@
 
-O Plugin pode ser usado para criar API REST usando como base o **python-app-template**.
-Esse Plugin aplica todas as dependências necessárias para desenvolver as APIs REST baseado no framework **FastAPI**, **Mangun** e **Serverless**.
+The plugin will create a project API REST with an endpoint using **python-app-template** as a base.
 
-
+This plugin will apply all dependencies needed to develop APIs REST using **FastAPI**, **Mangun** e **Serverless**.

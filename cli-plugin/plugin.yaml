@@ -1,5 +1,5 @@
 name: cli-plugin
-description: Adiciona a capacidade de um CLI ao Template de Python App. 
+description: Add CLI to a existing STK Python project.
 display-name: CLI 
 picture: https://avatars.githubusercontent.com/u/13245136?s=200&v=4
 category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
@@ -23,7 +23,7 @@ global-computed-inputs:
 hooks:
   - type: edit
     trigger: before-render
-    path: "src/pyproject.toml"
+    path: "pyproject.toml"
     changes:
       - insert:
           line: -1
@@ -36,3 +36,7 @@ hooks:
             snippet: "snippets/clickdependency"
           when:
             not-exists: "click"
+  - type: run
+    trigger: after-render
+    commands:
+      - stk run env-create

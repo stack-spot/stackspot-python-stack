@@ -1,5 +1,5 @@
 name: lambda-endpoint-create-multiples
-description: Create multiples endpoints
+description: Add multiples endpoints to an existing Lambda API.
 display-name: lambda-endpoint-create-multiples-plugin
 picture: plugin.png
 category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
@@ -23,7 +23,7 @@ inputs:
     required: true
     default: Client
     pattern: "([A-Z][a-z]+)+"
-    help: "Inform your resource name (e.g: Client)"
+    help: "Inform your resource name (e.g.: Client)"
 computed-inputs:
   uri_of_resource: "{{ resource | snakecase }}"
 hooks:

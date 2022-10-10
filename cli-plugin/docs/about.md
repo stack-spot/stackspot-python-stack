@@ -1,5 +1,4 @@
 
+This plugin will create a custom CLI (Command-line Interface) by using **python-app-template** as base.
 
-Este Plugin é usado para criar uma CLI personalizada utilizando o **python-app-template** como base. 
-
-O Plugin aplica todas as dependências necessárias para desenvolver uma CLI personalizada em Python e utiliza como base o framework [**Click**](https://click.palletsprojects.com/en/8.1.x/).
+The plugin apply all requirements needed to develop a custom CLI in Python using as base the [**Click**](https://click.palletsprojects.com/en/8.1.x/).

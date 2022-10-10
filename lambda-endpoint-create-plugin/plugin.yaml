@@ -1,5 +1,5 @@
 name: lambda-endpoint-create
-description: Add new endpoint
+description: Add new endpoint to an existing Lambda API.
 display-name: lambda-endpoint-create-plugin
 picture: plugin.png
 category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
@@ -22,13 +22,13 @@ inputs:
     required: true
     default: Client
     pattern: "([A-Z][a-z]+)+"
-    help: "Inform your resource name (e.g: Client)"
+    help: "Inform your resource name (e.g.: Client)"
 
   - label: Type name of your operation-id
     name: operation_id
     type: text
     pattern: "[a-z]*(([-][a-z]+)+)?"
-    help: "Inform your operation-id (e.g: create-or-update-client)"
+    help: "Inform your operation-id (e.g.: create-or-update-client)"
     required: true
     default: create-or-update
 
@@ -37,7 +37,7 @@ inputs:
     type: text
     required: true
     default: "/company/{company-id}/client?query={query}&quantity={quantity}&order={order}"
-    help: "Inform your URI (e.g: client/{id}) or company/{company-id}/client/{id}"
+    help: "Inform your URI (e.g.: client/{id} or company/{company-id}/client/{id})"
 
   - label: Choose http method of new endpoint
     name: method
@@ -50,7 +50,7 @@ inputs:
       - PATCH
     default: GET
     required: true
-    help: "Inform the method of the endpoint (e.g: post or delete)"
+    help: "Inform the method of the endpoint (e.g.: post or delete)"
 
 computed-inputs:
   method_sanitized: "{{ method | lower }}"

@@ -1,9 +1,8 @@
 
-Para utilizar esse Plugin é necessário ter:
-- **`stk app`** criado com o template **`python-app-template`** 
+## **Requirements**
 
-### **Requisitos**
-O seu ambiente de desenvolvimento precisar ter:
-- Python 3.8+
-- Unix baseado no sistema pra utilizar o **`makefile`**.
-- Se você quiser fazer o deploy da sua aplicação, é necessário ter o **`serverless framework`** instalado.
+- [**`Python`**](https://www.python.org/) 3.8+;
+
+- Already created an application with **`python-app-template`**;
+
+- If you want to deploy your application, you must have [**`npm`**](https://nodejs.org/) and [**`Serverless Framework`**](https://www.serverless.com/) installed. 
