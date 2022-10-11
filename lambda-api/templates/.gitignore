@@ -1,6 +1,0 @@
-.idea
-.serverless
-dist
-node_modules
-package-lock.json
-venv

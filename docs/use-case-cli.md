@@ -1,11 +1,12 @@
 
-## **CLI**
+## **CLI (Command Line Interface)**
 
-Criar e desenvolver a sua própria CLI utilizando **Python** e [**Click**](https://click.palletsprojects.com/en/8.1.x/)
+Create and develop CLI using [**`Python`**](https://www.python.org/) and [**Click**](https://click.palletsprojects.com/en/8.1.x/).
 
-### **O que é?**
-Você pode criar um projeto Python básico com esse template para desenvolver os seus projetos ou utilizá-lo junto com nossos Plugins para criar e personalizar a sua CLI.
+### **What is ?**
 
-#### **Como personalizar a CLI?** 
+Possibility to create your own customizable CLI with few commands with STK.
 
-Os Plugins disponíveis nessa Stack foram feitos para facilitar a personalização da sua CLI utilizando o framework Click e com isso, você pode adicionar novos comandos. 
+#### **How to customize?** 
+
+The plugins available in this Stack are designed for you to add multiple or single endpoints, speeding up your development time.

@@ -1,5 +1,5 @@
 name: python-app-template
-description: Template básico em Python com Poetry and Pytest.
+description: Create python template with Poetry and Pytest.
 types:
   - app-template
 inputs:
@@ -30,5 +30,5 @@ hooks:
   - type: run
     trigger: before-input
     commands:
-      - pip install poetry
-      - pip install virtualenv
+      - pip3 install poetry
+      - pip3 install virtualenv

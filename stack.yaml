@@ -1,4 +1,4 @@
-description: Desenvolva e publique a sua CLI personalizada ou APIs Lambda com a Stack de Phyton.
+description: Develop and publish your custom CLI or Lambda APIs with Stack Python.
 name: stackspot-python-stack
 display-name: Python Stack
 picture: stack.png
@@ -9,9 +9,9 @@ technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/
   - Python
 about: docs/about.md
 use-cases:
-  - title: Criar uma CLI personalizada em Python 
+  - title: Create customizable CLI using Python
     content: docs/use-case-cli.md
     stackfile: stackfiles/create_cli.yaml
-  - title: Criar uma API Lambda em Python 
+  - title: Create Lambda API using Python 
     content: docs/use-case-api.md
     stackfile: stackfiles/create_api.yaml

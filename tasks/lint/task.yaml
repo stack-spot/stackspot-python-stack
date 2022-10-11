@@ -1,0 +1,16 @@
+name: lint
+description: Execute lint
+supported-os:
+- windows
+- linux
+- mac
+requirements-check:
+  dependency-python:
+    check-command: python3 --version
+    info: python is not installed
+  dependency-poetry:
+    check-command: poetry --version
+    info: poetry is not installed
+command: |
+  poetry run autopep8 --in-place --recursive --aggressive --aggressive src/ tests/
+  poetry run flake8 src/ tests/

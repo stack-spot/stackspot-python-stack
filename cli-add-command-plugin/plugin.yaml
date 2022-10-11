@@ -1,5 +1,5 @@
 name: cli-add-command-plugin
-description: Adiciona um novo comando ao projeto baseado no Plugin CLI. 
+description: Add new command to a existing CLI project.
 display-name: CLI Add Command
 picture: https://avatars.githubusercontent.com/u/13245136?s=200&v=4
 category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
@@ -13,6 +13,8 @@ technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/
   - "Python"
 types:
   - app
+requirements:
+  - stackspot-python-stack/cli-add-command-plugin
 inputs:
   - label: command
     type: text

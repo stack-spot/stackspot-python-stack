@@ -1,0 +1,96 @@
+name: lambda-endpoint-create
+description: Add new endpoint to an existing Lambda API.
+display-name: lambda-endpoint-create-plugin
+picture: plugin.png
+category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
+compatibility:
+  - python
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#technologies
+  - "Api"
+types:
+  - app
+requirements:
+  - stackspot-python-stack/lambda-api
+inputs:
+  - label: Type name of your resource
+    name: resource
+    type: text
+    required: true
+    default: Client
+    pattern: "([A-Z][a-z]+)+"
+    help: "Inform your resource name (e.g.: Client)"
+
+  - label: Type name of your operation-id
+    name: operation_id
+    type: text
+    pattern: "[a-z]*(([-][a-z]+)+)?"
+    help: "Inform your operation-id (e.g.: create-or-update-client)"
+    required: true
+    default: create-or-update
+
+  - label: Type URI of new endpoint
+    name: uri
+    type: text
+    required: true
+    default: "/company/{company-id}/client?query={query}&quantity={quantity}&order={order}"
+    help: "Inform your URI (e.g.: client/{id} or company/{company-id}/client/{id})"
+
+  - label: Choose http method of new endpoint
+    name: method
+    type: text
+    items:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - PATCH
+    default: GET
+    required: true
+    help: "Inform the method of the endpoint (e.g.: post or delete)"
+
+computed-inputs:
+  method_sanitized: "{{ method | lower }}"
+  operation_id_sanitized: "{{ operation_id | snakecase }}"
+  resource_folder_name: "{{ resource | snakecase }}"
+  resource_request: "{{ resource }}Request"
+  resource_response: "{{ resource }}Response"
+  resource_request_sanitized: "{{ resource_request | snakecase }}"
+  resource_response_sanitized: "{{ resource_response | snakecase }}"
+hooks:
+  - type: run-script
+    trigger: before-render
+    script: scripts/verify_command_has_already_been_applied.py
+  - type: run-script
+    trigger: before-render
+    script: scripts/extract_data_from_inputs.py
+  - type: edit
+    trigger: after-render
+    path: local.py
+    changes:
+      - search:
+          string: "from fastapi import FastAPI"
+          insert-after:
+            value: "from src.{{ resource_folder_name }}.{{ operation_id_sanitized }}.controller import router as {{ resource_folder_name }}_{{ operation_id_sanitized }}_router\n"
+          when:
+            not-exists: "from src.{{ resource_folder_name }}.{{ operation_id_sanitized }}.controller import router as {{ resource_folder_name }}_{{ operation_id_sanitized }}_router"
+      - search:
+          string: "app = FastAPI()"
+          insert-after:
+            value: "app.include_router({{ resource_folder_name }}_{{ operation_id_sanitized }}_router)\n"
+          when:
+            not-exists: "app.include_router({{ resource_folder_name }}_{{ operation_id_sanitized }}_router)"
+  - type: edit-yaml
+    trigger: after-render
+    path: serverless.yaml
+    encoding: utf-8
+    changes:
+      - yamlpath: "$.functions"
+        update:
+          snippet: "snippets/serverless"
+  - type: run-script
+    trigger: after-render
+    script: scripts/delete_file.py

@@ -1,0 +1,61 @@
+name: lambda-api
+description: Add Lambda API project with FastAPI and Serverless to existing Python project.
+display-name: Lambda API
+picture: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Amazon_Lambda_architecture_logo.png"
+category: Backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
+compatibility:
+  - Python
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#technologies
+  - "Api"
+  - "AWS Lambda"
+types:
+  - app
+hooks:
+  - type: edit
+    trigger: before-render
+    path: "pyproject.toml"
+    changes:
+      - search:
+          string: "[tool.poetry.dependencies]"
+          replace-by:
+            snippet: "snippets/uvicorn"
+          when:
+            not-exists: "uvicorn"
+      - search:
+          string: "[tool.poetry.dependencies]"
+          replace-by:
+            snippet: "snippets/mangum"
+          when:
+            not-exists: "mangum"
+      - search:
+          string: "[tool.poetry.dependencies]"
+          replace-by:
+            snippet: "snippets/fastapi"
+          when:
+            not-exists: "fastapi"
+      - search:
+          string: "[tool.poetry.dev-dependencies]"
+          replace-by:
+            snippet: "snippets/requests"
+          when:
+            not-exists: "requests"
+      - search:
+          string: "[tool.poetry.dev-dependencies]"
+          replace-by:
+            snippet: "snippets/flake8"
+          when:
+            not-exists: "flake8"
+      - search:
+          string: "[tool.poetry.dev-dependencies]"
+          replace-by:
+            snippet: "snippets/autopep8"
+          when:
+            not-exists: "autopep8"
+  - type: run
+    trigger: after-render
+    commands:
+      - stk run env-create

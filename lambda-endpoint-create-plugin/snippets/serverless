@@ -1,0 +1,31 @@
+{{ resource_folder_name }}_{{ operation_id_sanitized }}:
+  package:
+    patterns:
+      - '!node_modules/**'
+      - '!htmlcov/**'
+      - '!env/**'
+      - '!venv/**'
+      - '!.venv/**'
+      - "!.serverless/**"
+      - "!.virtualenv/**"
+      - '!.mypy_cache/**'
+      - '!.pytest_cache/**'
+      - "!.idea/**"
+      - '!adrs/**'
+      - '!tests/**'
+      - "!dist/**"
+      - "!package.json"
+      - "!package-lock.json"
+      - "!requirements.txt"
+      - '!coverage.xml'
+      - "!README.md"
+      - "!local.py"
+      - "!pyproject.toml"
+      - "!poetry.lock"
+  handler: src/{{ resource_folder_name }}/{{ operation_id_sanitized }}/controller.handler
+  environment:
+    STAGE: ${self:provider.stage}
+  layers:
+    - { Ref: PythonRequirementsLambdaLayer }
+  events:
+    - httpApi: "{{ method }} {{ uri }}"

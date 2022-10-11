@@ -1,51 +1,55 @@
+## **Implementation**
 
-Para implementar o Plugin é necessário saber os inputs, a estrutura da pasta e o local de desenvolvimento:
+- **Step 1:** Create your CLI 
+	```
+	stk apply plugin cli-plugin
+	```
 
-## **Inputs**
+- **Step 2:** Type value for input
+	- **`CLI Command Name`**: Type the name of your CLI
+	
+	Example: 
+	```
+	command_name: my-own-cli
+	```
 
-- **`cli_command_name`**: A base do comando que é usada para invocar a CLI. 
+- **Step 3:** Active your environment calling the script according your S.O., execute the command below:
+	- Windows: 
+		```
+		.venv\Scripts\activate
+		```
 
-## **Local development**
-É recomendável utilizar um ambiente virtual para desenvolver sua CLI. 
+	- Linux or Mac: 
+		```
+		source .venv/bin/activate
+		```
 
-Siga os passos abaixo para usar o ambiente virtual de Python:
+- **Step 4:** Execute your newer command line interface:	
+	```
+	<cli_command_name> <command> <subcommand> <your-desidered-text>!
+	``` 
 
-**Passo 1.** Gere o ambiente usando o comando:
+	Example:
+	```
+	my-own-cli say hello Stacker!
+	```
+
+## **Project structure**
 
 ```
-make create-env
-``` 
-**Passo 2.** Ative o ambiente chamando o script **`activate`** na **`env/bin`**, veja o exemplo abaixo:
-```
-source env/bin/activate
-``` 
-
-**Passo 3.** Adicione o **`cli.py|main`** como ponto de entrada, com isso ocorre a ativação do ambiente virtual virtual.
-
-**Passo 4.** Instale as dependencias no seu ambiente virtual com o comando:
-```
-make install
-```  
-**Passo 5.** Envie os comandos para o seu CLI usando:
-```
-cli_command_name
-``` 
-**Passo 6.** Agora execute: 
-```
-<cli_command_name> <command> <subcommand> Stacker!
-``` 
-
-## **Estrutura da pasta**
-
-```
-<nome_projeto>
-	|__<nome_projeto>
-			|__cli.py
+<project_name>
+	|__<src>
+		<project_name>
+			|__ commands
+				|__ say
+					|__ __init__.py
+					|__ hello.py
+				|__ __init__.py
+			|__ cli.py
 			|__ __init__.py
-			|__commands
-				|__ __init__.py			
-	|__tests
-		|__test_cli.py
-	|__pyproject.toml
-|__Makefile
+		|__ tests
+			|__ __init__.py
+			|__ test_say_hello.py
+	|__ pyproject.toml
+	|__ stk.yml
 ```

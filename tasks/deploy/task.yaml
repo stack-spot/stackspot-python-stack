@@ -1,0 +1,12 @@
+name: deploy
+description: Serverless deploy project
+inputs:
+supported-os:
+- windows
+- linux
+- mac
+requirements-check:
+  dependency-example:
+    check-command: sls
+    info: serverless is not installed
+command: sls deploy
