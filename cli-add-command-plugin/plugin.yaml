@@ -14,7 +14,7 @@ technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/
 types:
   - app
 requirements:
-  - stackspot-python-stack/cli-add-command-plugin
+  - stackspot-python-stack/cli-plugin
 inputs:
   - label: command
     type: text
