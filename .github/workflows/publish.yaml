@@ -17,7 +17,7 @@ jobs:
 
       - name: Install STK CLI
         run: |
-            curl -fsSL https://stk-dev.stackspot.com/installer-pre-release/linux/stk-alpha.deb
+            curl https://stk-dev.stackspot.com/installer-pre-release/linux/stk-alpha.deb
             sudo dpkg --install stk-alpha.deb
 
       - run: stk-alpha --version
