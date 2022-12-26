@@ -1,0 +1,34 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - test/publish-pipe
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Install STK CLI
+        run: |
+            curl -fsSL https://stk-dev.stackspot.com/installer-pre-release/linux/stk-alpha.deb
+            sudo dpkg --install stk-alpha.deb
+
+      - run: stk-alpha --version
+
+      - run: stk-alpha list stack
+
+      - name: Login to StackSpot Account
+        run: stk-alpha login --client-id=${{ inputs.client_id }} --client-key=${{ inputs.client_key }} --realm=${{ inputs.realm }}
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Publish
+        run: stk-alpha publish stack
