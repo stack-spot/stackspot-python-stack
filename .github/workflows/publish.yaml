@@ -19,6 +19,7 @@ jobs:
         run: |
             wget https://stk-dev.stackspot.com/installer-pre-release/linux/stk-alpha.deb
             sudo dpkg --install stk-alpha.deb
+            stk --version
 
       - run: stk-alpha --version
 
