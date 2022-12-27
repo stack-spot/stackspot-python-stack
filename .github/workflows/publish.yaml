@@ -24,7 +24,7 @@ jobs:
       - run: stk-alpha --version
 
       - name: Login to StackSpot Account
-        run: stk-alpha login --client-id=${{ inputs.client_id }} --client-key=${{ inputs.client_key }} --realm=${{ inputs.realm }}
+        run: stk-alpha login --client-id=${{ secrets.CLIENT_ID }} --client-key=${{ secrets.CLIENT_KEY }} --realm=${{ secrets.REALM }}
 
       - run: stk-beta list stack
 
