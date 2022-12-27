@@ -19,7 +19,7 @@ jobs:
         run: |
             wget https://stk-dev.stackspot.com/installer-pre-release/linux/stk-beta.deb
             sudo dpkg --install stk-beta.deb
-            source ~/.bashrc
+            sudo mv /home/runner/.stk-beta/bin/* /usr/local/bin
 
       - run: stk-beta --version
 
