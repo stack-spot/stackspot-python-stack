@@ -15,27 +15,40 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+#      - name: Install STK CLI
+#        run: |
+#            wget https://stk-dev.stackspot.com/installer-pre-release/linux/stk-alpha.deb
+#            sudo dpkg --install stk-alpha.deb
+#            sudo mv /home/runner/.stk-alpha/bin/* /usr/local/bin
+
       - name: Install STK CLI
         run: |
-            wget https://stk-dev.stackspot.com/installer-pre-release/linux/stk-alpha.deb
-            sudo dpkg --install stk-alpha.deb
-            sudo mv /home/runner/.stk-alpha/bin/* /usr/local/bin
+            wget https://stk.stackspot.com/installer/linux/stk.deb
+            sudo dpkg --install stk.deb
+            sudo mv /home/runner/.stk/bin/* /usr/local/bin
 
-      - run: stk-alpha --version
+#      - run: stk-alpha --version
+      - run: stk --version
+
+#      - run: |
+#          cd /home/runner/.stk-alpha/
+#          cat .env
+#          sed 's+.qa.+.+g' .env
 
       - run: |
-          cd /home/runner/.stk-alpha/
+          cd /home/runner/.stk/
           cat .env
-          sed 's+.qa.+.+g' .env
-          ls
 
       - name: Login to StackSpot Account
-        run: stk-alpha login --client-id=${{ secrets.CLIENT_ID }} --client-key=${{ secrets.CLIENT_KEY }} --realm=${{ secrets.REALM }}
+#        run: stk-alpha login --client-id=${{ secrets.CLIENT_ID }} --client-key=${{ secrets.CLIENT_KEY }} --realm=${{ secrets.REALM }}
+        run: stk login --client-id=${{ secrets.CLIENT_ID }} --client-key=${{ secrets.CLIENT_KEY }} --realm=${{ secrets.REALM }}
 
-      - run: stk-beta list stack
+#      - run: stk-beta list stack
+      - run: stk list stack
 
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Publish
-        run: stk-alpha publish stack
+#        run: stk-alpha publish stack
+        run: stk publish stack
