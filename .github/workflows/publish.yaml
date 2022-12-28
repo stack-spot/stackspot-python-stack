@@ -23,7 +23,7 @@ jobs:
 
       - name: Install STK CLI
         run: |
-            wget https://stk.stackspot.com/installer/linux/stk-beta.deb
+            wget https://stk-dev.stackspot.com/installer-pre-release/linux/stk-beta.deb
             sudo dpkg --install stk-beta.deb
             sudo mv /home/runner/.stk-beta/bin/* /usr/local/bin
 
