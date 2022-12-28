@@ -37,6 +37,7 @@ jobs:
 
       - run: |
           cd /home/runner/.stk-beta/
+          ls
           cat .env
           sed 's+.qa.+.+g' .env
 
