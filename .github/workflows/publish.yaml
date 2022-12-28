@@ -35,10 +35,6 @@ jobs:
 #          cat .env
 #          sed 's+.qa.+.+g' .env
 
-      - run: |
-          cd /home/runner/.stk/
-          cat .env
-
       - name: Login to StackSpot Account
 #        run: stk-alpha login --client-id=${{ secrets.CLIENT_ID }} --client-key=${{ secrets.CLIENT_KEY }} --realm=${{ secrets.REALM }}
         run: stk login --client-id=${{ secrets.CLIENT_ID }} --client-key=${{ secrets.CLIENT_KEY }} --realm=${{ secrets.REALM }}
