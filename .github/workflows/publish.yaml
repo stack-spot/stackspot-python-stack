@@ -38,7 +38,7 @@ jobs:
 
       - name: Publish to the registry
         env:
-          REGISTRY_BASE_URL: http://registry.qa.stackspot.com
+          REGISTRY_BASE_URL: https://registry.stackspot.com
         run: |
           echo $REGISTRY_BASE_URL
           stk-alpha publish stack
