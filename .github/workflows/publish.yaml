@@ -20,7 +20,7 @@ jobs:
 
       - name: Install STK and create/move env
         env:
-          ENV_HYBRID: ${{ secrets.ENV_HYBRID }}
+          STK_ENV: ${{ secrets.STK_ENV }}
         run: |
           sudo dpkg --install stk-alpha.deb
           echo $STK_ENV > $HOME/.stk-alpha/.env
