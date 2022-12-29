@@ -21,26 +21,44 @@ jobs:
 #            sudo dpkg --install stk-alpha.deb
 #            sudo mv /home/runner/.stk-alpha/bin/* /usr/local/bin
 
-      - name: Install STK CLI
+#      - name: Install STK CLI
+#        run: |
+#            wget https://stk-dev.stackspot.com/installer-pre-release/linux/stk-beta.deb
+#            sudo dpkg --install stk-beta.deb
+#            echo { "metrics_url": "https://dataproduct-oscli.orangestack.com/v1/events/oscli/1/general_metrics", "metrics_enabled": false, "download_server": "https://stk.stackspot.com", "device_url": "https://new-portal-api.stackspot.com/security/device-code", "idm_base_url": "https://idm.stackspot.com", "actions_base_url": "https://actions-api.stackspot.com/actions/v1", "activation_base_url": "https://activation-code-api.stackspot.com"} > $HOME/.stk-beta/.env
+#            sudo mv $HOME/.stk-beta/bin/* /usr/local/bin
+#
+##      - run: stk-alpha --version
+#
+##      - run: |
+##          cd /home/runner/.stk-alpha/
+##          cat .env
+##          sed 's+.qa.+.+g' .env#
+#
+#      - name: Login to StackSpot Account
+##        run: stk-alpha login --client-id=${{ secrets.CLIENT_ID }} --client-key=${{ secrets.CLIENT_KEY }} --realm=${{ secrets.REALM }}
+#        run: stk-beta login --client-id=${{ secrets.CLIENT_ID }} --client-key=${{ secrets.CLIENT_KEY }} --realm=${{ secrets.REALM }}
+#
+##      - run: stk-beta list stack
+#      - run: stk-beta list stack
+
+      - name: Download STK
+        run: curl -O https://stk-dev.stackspot.com/installer-pre-release/linux/stk-beta.deb
+
+      - name: Install STK and create/move env
+        env:
+          ENV_HYBRID: ${{ secrets.ENV_HYBRID }}
         run: |
-            wget https://stk-dev.stackspot.com/installer-pre-release/linux/stk-beta.deb
-            sudo dpkg --install stk-beta.deb
-            echo { "metrics_url": "https://dataproduct-oscli.orangestack.com/v1/events/oscli/1/general_metrics", "metrics_enabled": false, "download_server": "https://stk.stackspot.com", "device_url": "https://new-portal-api.stackspot.com/security/device-code", "idm_base_url": "https://idm.stackspot.com", "actions_base_url": "https://actions-api.stackspot.com/actions/v1", "activation_base_url": "https://activation-code-api.stackspot.com"} > $HOME/.stk-beta/.env
-            sudo mv $HOME/.stk-beta/bin/* /usr/local/bin
-
-#      - run: stk-alpha --version
-
-#      - run: |
-#          cd /home/runner/.stk-alpha/
-#          cat .env
-#          sed 's+.qa.+.+g' .env#
+          sudo dpkg --install stk-beta.deb
+          echo { "metrics_url": "https://dataproduct-oscli.orangestack.com/v1/events/oscli/1/general_metrics", "metrics_enabled": false, "download_server": "https://stk.stackspot.com", "device_url": "https://new-portal-api.stackspot.com/security/device-code", "idm_base_url": "https://idm.stackspot.com", "actions_base_url": "https://actions-api.stackspot.com/actions/v1", "activation_base_url": "https://activation-code-api.stackspot.com"} > $HOME/.stk-beta/.env 
+          mv $HOME/.stk-beta/bin/* /usr/local/bin
 
       - name: Login to StackSpot Account
-#        run: stk-alpha login --client-id=${{ secrets.CLIENT_ID }} --client-key=${{ secrets.CLIENT_KEY }} --realm=${{ secrets.REALM }}
-        run: stk-beta login --client-id=${{ secrets.CLIENT_ID }} --client-key=${{ secrets.CLIENT_KEY }} --realm=${{ secrets.REALM }}
-
-#      - run: stk-beta list stack
-      - run: stk-beta list stack
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_KEY: ${{ secrets.CLIENT_KEY }}
+          REALM: ${{ secrets.REALM }}
+        run: stk-beta login --client-id=$CLIENT_ID --client-key=$CLIENT_KEY --realm=$REALM
 
       - name: Checkout
         uses: actions/checkout@v3
