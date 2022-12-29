@@ -1,6 +1,6 @@
 description: Develop and publish your custom CLI or Lambda APIs with Stack Python.
 name: stackspot-python-stack
-version: 0.0.1
+version: 0.0.11
 display-name: Python Stack
 picture: stack.png
 category: Backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
