@@ -1,3 +1,4 @@
+name: create api
 type: app
 description: Create a Python Lambda API Project
 template: stackspot-python-stack/python-app-template
