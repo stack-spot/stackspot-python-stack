@@ -31,7 +31,7 @@ jobs:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_KEY: ${{ secrets.CLIENT_KEY }}
           REALM: ${{ secrets.REALM }}
-        run: stk-alpha login --client-id=$CLIENT_ID --client-key=$CLIENT_KEY --realm=$REALM
+        run: stk-alpha login --client-id $CLIENT_ID --client-key $CLIENT_KEY --realm $REALM
 
       - name: Checkout
         uses: actions/checkout@v3
