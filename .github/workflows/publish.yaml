@@ -36,17 +36,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Publish to the registry
-        env:
-          REGISTRY_BASE_URL: https://registry.stackspot.com
-        run: |
-          echo $REGISTRY_BASE_URL
-          stk-alpha publish stack
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
 
-      - name: Show Log
-        if: always()
-        run: |
-          cd $HOME/.stk-alpha/logs/
-          cat logs.log
-          cd $HOME/.stk-alpha/
-          cat session.json
+#      - name: Publish to the registry
+#        env:
+#          REGISTRY_BASE_URL: https://registry.stackspot.com
+#        run: |
+#          echo $REGISTRY_BASE_URL
+#          stk-alpha publish stack
+
+#      - name: Show Log
+#        if: always()
+#        run: |
+#          cd $HOME/.stk-alpha/logs/
+#          cat logs.log
