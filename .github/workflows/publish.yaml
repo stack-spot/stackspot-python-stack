@@ -49,9 +49,9 @@ jobs:
           echo $REGISTRY_BASE_URL
           stk-alpha publish stack
 
-#      - name: Show Log
-#        if: always()
-#        run: |
-#          cd $HOME/.stk-alpha/logs/
-#          cat logs.log
+      - name: Show Log
+        if: always()
+        run: |
+          cd $HOME/.stk-alpha/logs/
+          cat logs.log
 
