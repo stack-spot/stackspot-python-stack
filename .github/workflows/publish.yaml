@@ -54,4 +54,3 @@ jobs:
         run: |
           cd $HOME/.stk-alpha/logs/
           cat logs.log
-
