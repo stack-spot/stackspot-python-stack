@@ -36,12 +36,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-#      - name: Setup upterm session
-#        uses: lhotari/action-upterm@v1
-#        with:
-#          limit-access-to-actor: true
-#          limit-access-to-users: adroaldonetozup
-
       - name: Publish to the registry
         env:
           REGISTRY_BASE_URL: https://registry.stackspot.com
