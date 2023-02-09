@@ -41,7 +41,7 @@ jobs:
           REGISTRY_BASE_URL: https://registry.stackspot.com
         run: |
           echo $REGISTRY_BASE_URL
-          stk-alpha publish stack
+          stk-alpha publish plugin
 
       - name: Show Log
         if: always()
